@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Daich - Cybersecurity Professional</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* GOOGLE FONTS */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #64ffda;
+            --dark-navy: #020c1b;
+            --navy: #0a192f;
+            --light-navy: #112240;
+            --lightest-navy: #233554;
+            --navy-shadow: rgba(2, 12, 27, 0.7);
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --lightest-slate: #ccd6f6;
+            --white: #e6f1ff;
+            --green-tint: rgba(100, 255, 218, 0.1);
+            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+            --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+            --font-sans: 'Poppins', 'San Francisco', 'SF Pro Text', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans);
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--navy);
+            color: var(--slate);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--navy);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--lightest-navy);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--green-tint);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* UTILITY CLASSES */
+        .text-center {
+            text-align: center;
+        }
+        
+        .numbered-heading {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin: 10px 0 40px;
+            width: 100%;
+            font-size: clamp(26px, 5vw, 30px);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--lightest-slate);
+        }
+        
+        .numbered-heading::before {
+            position: relative;
+            margin-right: 10px;
+            color: var(--secondary-color);
+            font-family: var(--font-mono);
+            font-size: clamp(16px, 3vw, 20px);
+            font-weight: 400;
+        }
+        
+        .numbered-heading::after {
+            content: '';
+            display: block;
+            position: relative;
+            width: 300px;
+            height: 1px;
+            margin-left: 20px;
+            background-color: var(--lightest-navy);
+        }
+        
+        .numbered-heading.about::before { content: '01.'; }
+        .numbered-heading.experience::before { content: '02.'; }
+        .numbered-heading.skills::before { content: '03.'; }
+        .numbered-heading.education::before { content: '04.'; }
+        .numbered-heading.certifications::before { content: '05.'; }
+        .numbered-heading.organizations::before { content: '06.'; }
+        .numbered-heading.contact::before { content: '07.'; }
+        
+        .btn {
+            display: inline-block;
+            color: var(--secondary-color);
+            background-color: transparent;
+            border: 1px solid var(--secondary-color);
+            border-radius: 4px;
+            padding: 1.25rem 1.75rem;
+            font-size: 14px;
+            font-family: var(--font-mono);
+            line-height: 1;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 20px 10px 0 0;
+        }
+        
+        .btn:hover {
+            background-color: var(--green-tint);
+            outline: none;
+            transform: translateY(-3px);
+        }
+        
+        .section {
+            padding: 100px 0;
+        }
+        
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 11;
+            transition: var(--transition);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 0 50px;
+        }
+        
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 42px;
+            height: 42px;
+        }
+        
+        .logo svg {
+            fill: none;
+            user-select: none;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo:hover svg path {
+            fill: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--lightest-slate);
+            position: relative;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            transition: var(--transition);
+        }
+        
+        .nav-links a span {
+            color: var(--secondary-color);
+            margin-right: 5px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .resume-button {
+            color: var(--secondary-color);
+            background-color: transparent;
+            border: 1px solid var(--secondary-color);
+            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            font-size: 13px;
+            font-family: var(--font-mono);
+            line-height: 1;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 15px;
+        }
+        
+        .resume-button:hover {
+            background-color: var(--green-tint);
+            outline: none;
+        }
+        
+        /* MOBILE NAV */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 2px;
+            margin-bottom: 5px;
+            position: relative;
+            background: var(--secondary-color);
+            border-radius: 3px;
+            transform-origin: 4px 0px;
+            transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                        background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                        opacity 0.55s ease;
+        }
+        
+        .hamburger span:first-child {
+            transform-origin: 0% 0%;
+        }
+        
+        .hamburger span:nth-last-child(1) {
+            transform-origin: 0% 100%;
+            margin-bottom: 0;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(0px, -2px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: rotate(0deg) scale(0.2, 0.2);
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(0, 1px);
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--navy);
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            margin: 0;
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 600;
+            color: var(--lightest-slate);
+            line-height: 1.1;
+            font-family: var(--font-heading);
+        }
+        
+        .hero-subtitle {
+            margin: 10px 0 30px;
+            color: var(--secondary-color);
+            font-family: var(--font-mono);
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        .hero-description {
+            margin: 20px 0 0;
+            max-width: 540px;
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--slate);
+        }
+        
+        .hero h1 {
+            margin: 0 0 30px 4px;
+            color: var(--secondary-color);
+            font-family: var(--font-mono);
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        .hero-cta {
+            margin-top: 50px;
+        }
+        
+        /* ABOUT SECTION */
+        .about-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .about-text a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .about-text a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        
+        .about-text a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        
+        .about-img {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .about-img .wrapper {
+            position: relative;
+            display: block;
+            width: 100%;
+            border-radius: 12px;
+            transition: var(--transition);
+            overflow: hidden;
+            aspect-ratio: 1/1;
+        }
+        
+        .about-img .wrapper::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            border: 2px solid var(--secondary-color);
+            top: 20px;
+            left: 20px;
+            z-index: -1;
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            position: relative;
+            transition: var(--transition);
+            filter: none;
+            mix-blend-mode: normal;
+        }
+        
+        /* EXPERIENCE SECTION */
+        .experience-tabs {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .tab-list {
+            position: relative;
+            z-index: 3;
+            width: max-content;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .tab-list-item {
+            border-left: 2px solid var(--lightest-navy);
+            transition: var(--transition);
+        }
+        
+        .tab-list-item:hover {
+            background-color: var(--light-navy);
+        }
+        
+        .tab-list-button {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 42px;
+            padding: 0 20px 2px;
+            border: none;
+            background-color: transparent;
+            color: var(--slate);
+            font-family: var(--font-mono);
+            font-size: 13px;
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .tab-list-button.active {
+            color: var(--secondary-color);
+            border-left: 2px solid var(--secondary-color);
+            margin-left: -2px;
+        }
+        
+        .tab-content {
+            position: relative;
+            width: 100%;
+            height: auto;
+            padding-top: 10px;
+            padding-left: 30px;
+        }
+        
+        .tab-panel {
+            width: 100%;
+            height: auto;
+            padding: 10px 5px;
+        }
+        
+        .tab-panel h3 {
+            margin-bottom: 5px;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--lightest-slate);
+        }
+        
+        .tab-panel h4 {
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: var(--font-mono);
+            color: var(--secondary-color);
+        }
+        
+        .tab-panel p {
+            margin-bottom: 15px;
+        }
+        
+        .tab-panel ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .tab-panel li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .tab-panel li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+        
+        /* SKILLS SECTION */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .skill-card {
+            background-color: var(--light-navy);
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px -15px var(--navy-shadow);
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-7px);
+        }
+        
+        .skill-card h3 {
+            margin-bottom: 20px;
+            color: var(--lightest-slate);
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .skill-card li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .skill-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+        
+        /* EDUCATION SECTION */
+        .education-card {
+            background-color: var(--light-navy);
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px -15px var(--navy-shadow);
+            transition: var(--transition);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-7px);
+        }
+        
+        .education-card h3 {
+            margin-bottom: 5px;
+            color: var(--lightest-slate);
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .education-card h4 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+            font-size: 16px;
+            font-weight: 400;
+            font-family: var(--font-mono);
+        }
+        
+        .education-card p {
+            margin-bottom: 15px;
+        }
+        
+        .education-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .education-card li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .education-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+        
+        /* CERTIFICATIONS SECTION */
+        .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .cert-card {
+            background-color: var(--light-navy);
+            padding: 25px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px -15px var(--navy-shadow);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-7px);
+        }
+        
+        .cert-logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+            background-color: var(--navy);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .cert-details h4 {
+            color: var(--lightest-slate);
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .cert-details p {
+            color: var(--slate);
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        
+        /* CONTACT SECTION */
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-size: clamp(40px, 5vw, 60px);
+            color: var(--lightest-slate);
+            margin-bottom: 20px;
+        }
+        
+        .contact-subtitle {
+            color: var(--secondary-color);
+            font-family: var(--font-mono);
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .contact-text {
+            margin-bottom: 50px;
+        }
+        
+        .contact-form {
+            background-color: var(--light-navy);
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px -15px var(--navy-shadow);
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--lightest-slate);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--navy);
+            border: 1px solid var(--lightest-navy);
+            border-radius: 4px;
+            color: var(--lightest-slate);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px var(--green-tint);
+        }
+        
+        textarea.form-control {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            color: var(--secondary-color);
+            background-color: transparent;
+            border: 1px solid var(--secondary-color);
+            border-radius: 4px;
+            padding: 1.25rem 1.75rem;
+            font-size: 14px;
+            font-family: var(--font-mono);
+            line-height: 1;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--green-tint);
+        }
+        
+        /* FOOTER */
+        footer {
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
+            color: var(--light-slate);
+            background-color: var(--light-navy);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-text {
+            color: var(--light-slate);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        
+        .footer-text p {
+            margin-bottom: 10px;
+        }
+        
+        .footer-text a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            background-color: var(--light-navy);
+            color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--green-tint);
+            transform: translateY(-3px);
+        }
+        
+        /* RESPONSIVE */
+        @media screen and (max-width: 1080px) {
+            .section {
+                padding: 80px 0;
+            }
+            
+            .numbered-heading::after {
+                width: 200px;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .numbered-heading::after {
+                width: 100px;
+            }
+            
+            .about-content {
+                display: block;
+            }
+            
+            .about-img {
+                margin: 50px auto 0;
+            }
+            
+            .experience-tabs {
+                display: block;
+            }
+            
+            .tab-list {
+                display: flex;
+                overflow-x: auto;
+                margin-bottom: 30px;
+            }
+            
+            .tab-list-item {
+                border-left: 0;
+                border-bottom: 2px solid var(--lightest-navy);
+            }
+            
+            .tab-list-button.active {
+                border-left: 0;
+                border-bottom: 2px solid var(--secondary-color);
+                margin-left: 0;
+                margin-bottom: -2px;
+            }
+            
+            .tab-content {
+                padding-left: 0;
+            }
+            
+            .certifications-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                padding: 0 25px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .mobile-nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 75vw;
+                height: 100vh;
+                padding: 50px 10px;
+                background-color: var(--light-navy);
+                box-shadow: -10px 0px 30px -15px var(--navy-shadow);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: var(--transition);
+                z-index: 10;
+            }
+            
+            .mobile-nav.active {
+                transform: translateX(0);
+            }
+            
+            .mobile-nav-links {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 100%;
+                text-align: center;
+                list-style: none;
+            }
+            
+            .mobile-nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-nav-links a {
+                display: inline-block;
+                text-decoration: none;
+                color: var(--lightest-slate);
+                font-family: var(--font-mono);
+                font-size: 16px;
+                padding: 10px;
+                width: 100%;
+                transition: var(--transition);
+            }
+            
+            .mobile-nav-links a span {
+                color: var(--secondary-color);
+                margin-right: 5px;
+            }
+            
+            .mobile-nav-links a:hover {
+                color: var(--secondary-color);
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 9;
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .hero-description {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 1rem 1.25rem;
+                font-size: 12px;
+            }
+            
+            .hero-cta {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-cta .btn {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .skill-card {
+                padding: 20px;
+            }
+            
+            .cert-card {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cert-logo {
+                margin: 0 auto 15px;
+            }
+        }
+        
+        .sidebar {
+            display: none !important;
+        }
+        
+        .side-nav {
+            display: none !important;
+        }
+        
+        /* Hide any other potential sidebar elements */
+        [class*="side-"] {
+            display: none !important;
+        }
+        
+        /* Hide all navigation links */
+        a[href^="#"] {
+            display: none !important;
+        }
+        
+        /* But keep the navigation in the header visible */
+        .nav-links a[href^="#"],
+        .mobile-nav-links a[href^="#"],
+        .hero-cta a[href^="#"],
+        .back-to-top {
+            display: inline-block !important;
+        }
+        
+        /* Hide any stray navigation elements */
+        [href^="#skills"],
+        [href^="#education"],
+        [href^="#certifications"] {
+            display: none !important;
+        }
+        
+        /* Keep the header navigation visible */
+        header .nav-links a[href^="#"] {
+            display: inline-block !important;
+        }
+        
+        /* Remove all top-left links */
+        body > a[href^="#"],
+        body > .resume-button,
+        body > a[href^="#skills"],
+        body > a[href^="#education"],
+        body > a[href^="#certifications"],
+        body > a[href^="#contact"] {
+            position: fixed !important;
+            top: -9999px !important;
+            left: -9999px !important;
+            width: 0 !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+            clip: rect(0 0 0 0) !important;
+            -webkit-clip-path: inset(50%) !important;
+            clip-path: inset(50%) !important;
+            border: 0 !important;
+            white-space: nowrap !important;
+            pointer-events: none !important;
+            opacity: 0 !important;
+            z-index: -9999 !important;
+            display: none !important;
+            visibility: hidden !important;
+        }
+        
+        /* Hide any direct children of body that are links */
+        body > a {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            position: absolute !important;
+            z-index: -9999 !important;
+        }
+        
+        /* Only show links inside proper containers */
+        .nav-container a,
+        .mobile-nav a,
+        .hero-cta a,
+        .back-to-top,
+        .container a {
+            display: inline-block !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-container">
+                    <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 0L0 10V26L18 36L36 26V10L18 0ZM14 27.38L7 23.57V17.31L14 21.12V27.38ZM7 15.31V12.97L14 16.77V19.12L7 15.31ZM16 28.88V22.61L22.03 19.31L28 22.63V28.89L22 32.19L16 28.88ZM29 23.57L22 19.77V16.42L29 20.23V23.57ZM16 8.72L22.03 12.03L16 15.33L9.97 12.03L16 8.72ZM24 14.12L30 10.34V13.67L24 17.46V14.12ZM29 8.31L22 12.12V8.78L25.97 6.5L29 8.31ZM9 13.67V10.34L15 14.12V17.46L9 13.67ZM9 8.31L12.03 6.5L16 8.78V12.12L9 8.31Z" fill="#64ffda"/>
+                    </svg>
+                </div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home"><span>01.</span> Home</a></li>
+                <li><a href="#about"><span>02.</span> About</a></li>
+                <li><a href="#experience"><span>03.</span> Experience</a></li>
+                <li><a href="#skills"><span>04.</span> Skills</a></li>
+                <li><a href="#education"><span>05.</span> Education</a></li>
+                <li><a href="#certifications"><span>06.</span> Certifications</a></li>
+                <li><a href="#contact"><span>07.</span> Contact</a></li>
+                <li><a href="#" class="resume-button">Resume</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Nav -->
+    <div class="overlay"></div>
+    <div class="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li><a href="#home"><span>01.</span> Home</a></li>
+            <li><a href="#about"><span>02.</span> About</a></li>
+            <li><a href="#experience"><span>03.</span> Experience</a></li>
+            <li><a href="#skills"><span>04.</span> Skills</a></li>
+            <li><a href="#education"><span>05.</span> Education</a></li>
+            <li><a href="#certifications"><span>06.</span> Certifications</a></li>
+            <li><a href="#contact"><span>07.</span> Contact</a></li>
+            <li><a href="#" class="resume-button">Resume</a></li>
+        </ul>
+    </div>
+    
+    <!-- Side Navigation -->
+    <div class="sidebar">
+        <ul class="side-nav">
+            <li><a href="#home">01</a></li>
+            <li><a href="#about">02</a></li>
+            <li><a href="#experience">03</a></li>
+            <li><a href="#skills">04</a></li>
+            <li><a href="#education">05</a></li>
+            <li><a href="#certifications">06</a></li>
+            <li><a href="#contact">07</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, my name is</h1>
+                <h2 class="hero-title">Ryan Daich.</h2>
+                <h3 class="hero-title" style="color: var(--slate);">I secure the digital world.</h3>
+                <p class="hero-description">
+                    I'm a cybersecurity specialist and computer science student specializing in identity & access management, threat detection, and incident response. Currently, I'm focused on building secure IT infrastructures and advocating for better cybersecurity practices at <a href="#" style="color: var(--secondary-color); text-decoration: none;">Manhattanville University</a>.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn">Get In Touch</a>
+                    <a href="#projects" class="btn">Check Out My Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="numbered-heading about">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Hello! I'm Ryan, a passionate cybersecurity enthusiast currently pursuing my Bachelor's degree in Computer Science with minors in Data Science and Communication Studies at Manhattanville University. My journey in the tech world began with a deep curiosity about how systems work and how to protect them from threats.
+                    </p>
+                    <p>
+                        As the founder and president of the <a href="#">Manhattanville University Cybersecurity Club</a>, I've had the opportunity to organize workshops, lead phishing awareness campaigns, and collaborate with industry professionals to bridge the gap between academic theory and practical applications.
+                    </p>
+                    <p>
+                        My professional experience includes roles as a Cybersecurity Analyst and IT Team Lead at MetroPlus Health Plan, where I've gained valuable hands-on experience in configuring encryption systems, managing user accounts, and responding to security incidents.
+                    </p>
+                    <p>
+                        Beyond technical skills, I'm deeply committed to mentoring others, as evidenced by my volunteer work with the Valiant Mentoring Program and various youth literacy initiatives. I believe in using technology as a force for positive change.
+                    </p>
+                    <p>
+                        Here are a few technologies I've been working with recently:
+                    </p>
+                    <ul style="display: grid; grid-template-columns: repeat(2, minmax(140px, 200px)); gap: 0px 10px; padding: 0; margin: 20px 0 0 0; overflow: hidden; list-style: none;">
+                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
+                            Python
+                        </li>
+                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
+                            Active Directory
+                        </li>
+                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
+                            Kali Linux
+                        </li>
+                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
+                            Microsoft Defender XDR
+                        </li>
+                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
+                            Java
+                        </li>
+                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
+                            Wireshark
+                        </li>
+                    </ul>
+                </div>
+                <div class="about-img">
+                    <div class="wrapper">
+                        <img src="images/ryan-daich.jpg" alt="Ryan Daich">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section" style="background-color: var(--dark-navy);">
+        <div class="container">
+            <h2 class="numbered-heading experience">Where I've Worked</h2>
+            <div class="experience-tabs">
+                <div class="tab-list" role="tablist">
+                    <div class="tab-list-item" role="presentation">
+                        <button class="tab-list-button active" id="tab-0" type="button" role="tab" aria-selected="true">MetroPlus</button>
+                    </div>
+                    <div class="tab-list-item" role="presentation">
+                        <button class="tab-list-button" id="tab-1" type="button" role="tab" aria-selected="false">Manhattanville IT</button>
+                    </div>
+                    <div class="tab-list-item" role="presentation">
+                        <button class="tab-list-button" id="tab-2" type="button" role="tab" aria-selected="false">Cyber Club</button>
+                    </div>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-panel active" id="panel-0" role="tabpanel" aria-labelledby="tab-0">
+                        <h3>IT Team Lead Intern <span style="color: var(--secondary-color);">@MetroPlus Health Plan</span></h3>
+                        <h4>June 2024 - Present</h4>
+                        <ul>
+                            <li>Led and managed a team of interns coordinating daily tasks and ensuring all IT solutions are resolved.</li>
+                            <li>Assisted networking team to configure and deploy 256-bit encryption for all end-user machines.</li>
+                            <li>Managed new user accounts and permissions within MS Active Directory.</li>
+                            <li>Documented all support activities in Service Now to ensure accurate tracking of issues and resolutions.</li>
+                            <li>Assisted InfoSec team mitigating security threats related to unauthorized access attempts.</li>
+                        </ul>
+                    </div>
+                    <div class="tab-panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" hidden>
+                        <h3>Student Cybersecurity Analyst <span style="color: var(--secondary-color);">@Manhattanville University</span></h3>
+                        <h4>September 2023 - Present</h4>
+                        <ul>
+                            <li>Monitored, analyzed, and responded to security incidents using Microsoft Defender XDR, Sentinel, and Wazuh.</li>
+                            <li>Investigated and mitigated phishing attempts, ran controlled phishing simulations, and trained students and faculty.</li>
+                            <li>Deployed and configured security agents across endpoints, ensuring proactive threat detection.</li>
+                            <li>Managed Microsoft Active Directory permissions and security policies, strengthening network security.</li>
+                            <li>Participated in Tabletop cybersecurity exercises, refining incident response strategies and enhancing campus security awareness.</li>
+                        </ul>
+                    </div>
+                    <div class="tab-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
+                        <h3>Founder & President <span style="color: var(--secondary-color);">@Manhattanville Cybersecurity Club</span></h3>
+                        <h4>October 2023 - Present</h4>
+                        <ul>
+                            <li>Founded and established the university's first cybersecurity-focused student organization.</li>
+                            <li>Led the ValiGuard phishing campaign to boost cybersecurity awareness through training and phishing simulations.</li>
+                            <li>Organized weekly workshops and guest speaker events with cyber industry professionals.</li>
+                            <li>Played an important role in advocating for and successfully establishing a Cybersecurity Major at Manhattanville University.</li>
+                            <li>Established partnerships with corporations for sponsorships, enhancing the club's capabilities and events.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="numbered-heading skills">What I Can Do</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3>Cybersecurity</h3>
+                    <ul>
+                        <li>Threat & Incident Response</li>
+                        <li>Identity & Access Management</li>
+                        <li>Risk Management and Audit</li>
+                        <li>Phishing Simulations</li>
+                        <li>Security Awareness Training</li>
+                        <li>Vulnerability Assessment</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Programming</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>SQL</li>
+                        <li>HTML/CSS</li>
+                        <li>PHP</li>
+                        <li>PowerShell</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & Software</h3>
+                    <ul>
+                        <li>Microsoft Defender XDR</li>
+                        <li>Wireshark</li>
+                        <li>Nmap</li>
+                        <li>Metasploit</li>
+                        <li>Armitage</li>
+                        <li>Microsoft Office Suite</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Operating Systems</h3>
+                    <ul>
+                        <li>Windows</li>
+                        <li>Kali Linux</li>
+                        <li>Parrot OS</li>
+                        <li>Ubuntu</li>
+                        <li>MAC OS</li>
+                        <li>Oracle VirtualBox</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>IT Infrastructure</h3>
+                    <ul>
+                        <li>Active Directory</li>
+                        <li>Network Security</li>
+                        <li>System Integration</li>
+                        <li>Endpoint Protection</li>
+                        <li>Security Architecture</li>
+                        <li>Log Analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Leadership</h3>
+                    <ul>
+                        <li>Team Management</li>
+                        <li>Project Coordination</li>
+                        <li>Public Speaking</li>
+                        <li>Training & Development</li>
+                        <li>Strategic Planning</li>
+                        <li>Event Organization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section" style="background-color: var(--dark-navy);">
+        <div class="container">
+            <h2 class="numbered-heading education">My Education</h2>
+            <div class="education-card">
+                <h3>Manhattanville University</h3>
+                <h4>Bachelor of Science: Computer Science</h4>
+                <p><i class="fas fa-calendar-alt"></i> August 2022 - May 2026 (Anticipated)</p>
+                <p><strong>Minors:</strong> Data Science and Communication Studies</p>
+                <p><strong>Academic Awards:</strong></p>
+                <ul>
+                    <li>Dean's List - 2023 and 2024</li>
+                    <li>Sister Mary Clark Scholars -- Educational Scholarship Award 2022, 2023, and 2024</li>
+                </ul>
+                <p><strong>Relevant Coursework:</strong></p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
+                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Cybersecurity and Networking</div>
+                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Computer Programming I & II</div>
+                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Discrete Structures</div>
+                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Computer System Architecture</div>
+                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Natural Language Processing</div>
+                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Foundations of Deep Learning</div>
+                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Computation in Data Science</div>
+                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Database Design & Construction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="numbered-heading certifications">Certifications</h2>
+            <div class="certifications-container">
+                <div class="cert-card">
+                    <div class="cert-logo">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="cert-details">
+                        <h4>Google Cybersecurity Professional Certificate</h4>
+                        <p>Issued: October 2024</p>
+                        <p>Credential ID: 24EAIM3MMKFY</p>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-logo">
+                        <span>ISC²</span>
+                    </div>
+                    <div class="cert-details">
+                        <h4>ISC2 Systems Security Certified Practitioner (SSCP)</h4>
+                        <p>Issued: October 2024</p>
+                        <p>Credential ID: RXF2EE0S9YA</p>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-logo">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="cert-details">
+                        <h4>Assets, Threats, and Vulnerabilities</h4>
+                        <p>Issued: September 2024</p>
+                        <p>Credential ID: OJ5TBXCFAJ9R</p>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-logo">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="cert-details">
+                        <h4>Connect and Protect: Networks and Network Security</h4>
+                        <p>Issued: September 2024</p>
+                        <p>Credential ID: 25RH25EAVKJZ</p>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="margin-bottom: 20px; font-style: italic;">Currently preparing for: CompTIA Security+ Certification</p>
+                <a href="#contact" class="btn">View All Credentials</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizations Section -->
+    <section id="organizations" class="section" style="background-color: var(--dark-navy);">
+        <div class="container">
+            <h2 class="numbered-heading organizations">Organizations & Leadership</h2>
+            <div class="education-card">
+                <h3>Manhattanville Cybersecurity Club</h3>
+                <h4>Founder and President</h4>
+                <p><i class="fas fa-calendar-alt"></i> October 2023 - Present</p>
+                <ul>
+                    <li>Led the ValiGuard phishing campaign to boost cybersecurity awareness through training and simulations.</li>
+                    <li>Organized weekly workshops and guest speaker events with cyber industry professionals.</li>
+                    <li>Played an important role in advocating for and successfully establishing a Cybersecurity Major.</li>
+                    <li>Coordinated with Manhattanville University to integrate Cyber club activities with academic curriculum.</li>
+                    <li>Established partnerships with corporations for sponsorships, enhancing the club's capabilities and events.</li>
+                </ul>
+            </div>
+            <div class="education-card">
+                <h3>ISACA New York Chapter</h3>
+                <h4>Member</h4>
+                <p><i class="fas fa-calendar-alt"></i> April 2024 - Present</p>
+                <p>Active member of the Information Systems Audit and Control Association's New York chapter, participating in networking events and professional development opportunities focused on cybersecurity and information technology governance.</p>
+            </div>
+            <div class="education-card">
+                <h3>Sister Mary Clark Scholar - Service Volunteer</h3>
+                <h4>Volunteer Assistant</h4>
+                <p><i class="fas fa-calendar-alt"></i> August 2022 - Present</p>
+                <ul>
+                    <li>Valiant Mentoring Program - Mentoring paroled inmates situated within a halfway house.</li>
+                    <li>Mentoring young individuals via sports programs and literacy.</li>
+                    <li>Participated in a speaker series program.</li>
+                    <li>Participated with the Mayor of Yonkers on project development and weekly guest speaker events.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <h2 class="numbered-heading contact" style="justify-content: center;"></h2>
+                <h2 class="contact-title">Get In Touch</h2>
+                <h3 class="contact-subtitle">07. What's Next?</h3>
+                <p class="contact-text">
+                    I'm currently looking for new opportunities in the cybersecurity field. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                </p>
+                <a href="mailto:Ryandaich1@gmail.com" class="btn">Say Hello</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/ryan-daich" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:Ryandaich1@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:9293273817"><i class="fas fa-phone"></i></a>
+            </div>
+            <div class="footer-text">
+                <p>Designed & Built by Ryan Daich</p>
+                <p>&copy; 2025 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const overlay = document.querySelector('.overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        
+        // REMOVAL OF STRAY NAV LINKS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find any direct link children of the body element and remove them
+            const bodyChildren = document.body.children;
+            for (let i = 0; i < bodyChildren.length; i++) {
+                if (bodyChildren[i].tagName === 'A' || 
+                    (bodyChildren[i].classList && bodyChildren[i].classList.contains('resume-button'))) {
+                    document.body.removeChild(bodyChildren[i]);
+                    // Decrement i because the collection is live
+                    i--;
+                }
+            }
+            
+            // Also handle any links added directly to the body
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.addedNodes) {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.tagName === 'A' || 
+                                (node.classList && node.classList.contains('resume-button'))) {
+                                node.remove();
+                            }
+                        });
+                    }
+                });
+            });
+            
+            observer.observe(document.body, { childList: true });
+        });
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Tabs
+        const tabs = document.querySelectorAll('.tab-list-button');
+        const panels = document.querySelectorAll('.tab-panel');
+        
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                // Deactivate all tabs
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                
+                // Hide all panels
+                panels.forEach(p => {
+                    p.hidden = true;
+                    p.classList.remove('active');
+                });
+                
+                // Activate current tab and panel
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                panels[index].hidden = false;
+                panels[index].classList.add('active');
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Scroll Animation
+        const scrollLinks = document.querySelectorAll('a[href^="#"]');
+        
+        scrollLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Header Scroll Effect
+        const header = document.querySelector('header');
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            if (lastScrollY < window.scrollY && window.scrollY > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = window.scrollY;
+        });
+    </script>
+</body>
+</html>
