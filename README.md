@@ -1,6 +1,6 @@
 # Ryan Daich - Personal Website
 
-A professional portfolio website for Ryan Daich, showcasing skills, experience, and achievements in cybersecurity.
+A professional portfolio website for (Me) Ryan Daich, showcasing skills, experience, and achievements in cybersecurity.
 
 ## Features
 
