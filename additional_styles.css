@@ -1,568 +1,318 @@
 /* Additional modern CSS effects to enhance the website */
 
-/* Custom cursor */
-.custom-cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--secondary-color);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s, border-color 0.2s;
-    z-index: 9999;
-    mix-blend-mode: difference;
-  }
-  
-  .cursor-hover {
-    width: 40px;
-    height: 40px;
-    border-color: var(--accent-color);
-    background-color: rgba(255, 94, 91, 0.1);
-  }
-  
-  .cursor-active {
-    transform: translate(-50%, -50%) scale(0.5);
-    background-color: var(--secondary-color);
-  }
-  
-  /* Scroll indicator */
-  .scroll-indicator {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
-    z-index: 9999;
-    width: 0%;
-    transition: width 0.1s ease;
-  }
-  
-  /* Page transitions */
-  body {
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  
-  body.page-visible {
-    opacity: 1;
-  }
-  
-  /* Section visibility animations */
-  .section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  
-  .section-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Enhance skill cards with depth effects */
-  .skill-icon {
-    font-size: 32px;
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-    display: inline-block;
-    position: relative;
-    transition: transform 0.3s ease;
-  }
-  
-  .skill-icon::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: var(--green-tint);
-    border-radius: 50%;
-    z-index: -1;
-    transform: scale(0.8);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-  
-  .skill-card:hover .skill-icon::before {
-    transform: scale(1.5);
-    opacity: 0.4;
-  }
-  
-  /* Highlight for skills on hover */
-  .skill-card li:hover::before {
-    transform: scale(1.5);
-    transition: transform 0.2s ease;
-  }
-  
-  /* Add glowing effect to logo */
-  .logo svg {
-    filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.1));
-    transition: filter 0.5s ease;
-  }
-  
-  .logo:hover svg {
-    filter: drop-shadow(0 0 15px rgba(100, 255, 218, 0.5));
-  }
-  
-  /* Enhanced tab animations */
-  .tab-list-button {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .tab-list-button::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: var(--green-tint);
-    z-index: -1;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-  
-  .tab-list-button:hover::after {
-    transform: translateX(0);
-  }
-  
-  .tab-list-button.active::after {
-    transform: translateX(0);
-  }
-  
-  /* Animated background gradient */
-  .hero::after {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background: radial-gradient(circle at center, transparent 0%, var(--navy) 70%);
-    opacity: 0.1;
-    animation: rotate 20s linear infinite;
-    z-index: 0;
-  }
-  
-  @keyframes rotate {
-    0% {
+/* Page transitions */
+body {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+body.page-visible {
+  opacity: 1;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s ease;
+}
+
+/* Section visibility animations */
+.section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add glowing effect to logo */
+.logo svg {
+  filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.1));
+  transition: filter 0.5s ease;
+}
+
+.logo:hover svg {
+  filter: drop-shadow(0 0 15px rgba(100, 255, 218, 0.5));
+}
+
+/* Enhanced tab animations */
+.tab-list-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-list-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--green-tint);
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.tab-list-button:hover::after {
+  transform: translateX(0);
+}
+
+.tab-list-button.active::after {
+  transform: translateX(0);
+}
+
+/* Animated background gradient */
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle at center, transparent 0%, var(--navy) 70%);
+  opacity: 0.1;
+  animation: rotate 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  0% {
       transform: rotate(0deg);
-    }
-    100% {
+  }
+  100% {
       transform: rotate(360deg);
-    }
   }
-  
-  /* Glass morphism effects */
-  .contact-wrapper {
-    backdrop-filter: blur(10px);
-    background-color: rgba(17, 34, 64, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Typing cursor animation (for use with Typed.js) */
-  .typed-cursor {
-    color: var(--secondary-color);
-    font-weight: 300;
-    animation: blink 1s infinite;
-  }
-  
-  @keyframes blink {
-    0%, 100% {
+}
+
+/* Glass morphism effects */
+.contact-wrapper {
+  backdrop-filter: blur(10px);
+  background-color: rgba(17, 34, 64, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Typing cursor animation styles */
+.typed-cursor {
+  color: var(--secondary-color);
+  font-weight: 300;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
       opacity: 1;
-    }
-    50% {
+  }
+  50% {
       opacity: 0;
-    }
   }
-  
-  /* Enhanced button hover effects */
-  .btn {
-    position: relative;
-    overflow: hidden;
+}
+
+/* Typing text element styles */
+.typing-element {
+  color: var(--slate);
+  min-height: 76px;
+  display: inline-block;
+}
+
+/* Enhanced button hover effects */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover::after {
+  opacity: 0.15;
+}
+
+/* Header navigation highlight effect */
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--green-tint);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+  z-index: -1;
+  border-radius: 4px;
+}
+
+.nav-links a:hover::before {
+  transform: scaleY(1);
+}
+
+/* Education card enhancements */
+.education-card::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 0%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, var(--secondary-color), var(--accent-color));
+  transition: height 0.4s ease;
+}
+
+.education-card:hover::before {
+  height: 100%;
+}
+
+/* Certifications hover effects */
+.cert-card::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, var(--green-tint) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.cert-card:hover::after {
+  opacity: 0.1;
+}
+
+/* Section heading animations */
+.numbered-heading::before {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.numbered-heading:hover::before {
+  transform: translateX(5px);
+  color: var(--accent-color);
+}
+
+/* Contact section enhancements */
+.contact-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 40px;
+  border-radius: 12px;
+}
+
+.contact-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--secondary-color), transparent, var(--accent-color), transparent, var(--secondary-color));
+  background-size: 400%;
+  border-radius: 12px;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0.15;
+  transition: opacity 0.3s ease;
+  animation: borderAnimation 10s linear infinite;
+}
+
+.contact-wrapper:hover::before {
+  opacity: 0.3;
+}
+
+@keyframes borderAnimation {
+  0% {
+      background-position: 0 0;
   }
-  
-  .btn::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
+  100% {
+      background-position: 400% 0;
   }
-  
-  .btn:hover::after {
-    opacity: 0.15;
-  }
-  
-  /* Header navigation highlight effect */
-  .nav-links a::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: var(--green-tint);
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.3s ease;
-    z-index: -1;
-    border-radius: 4px;
-  }
-  
-  .nav-links a:hover::before {
-    transform: scaleY(1);
-  }
-  
-  /* Education card enhancements */
-  .education-card::before {
-    content: '';
-    position: absolute;
-    width: 3px;
-    height: 0%;
-    top: 0;
-    left: 0;
-    background: linear-gradient(to bottom, var(--secondary-color), var(--accent-color));
-    transition: height 0.4s ease;
-  }
-  
-  .education-card:hover::before {
-    height: 100%;
-  }
-  
-  /* Certifications hover effects */
-  .cert-card::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: linear-gradient(135deg, var(--green-tint) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: -1;
-  }
-  
-  .cert-card:hover::after {
-    opacity: 0.1;
-  }
-  
-  /* Section heading animations */
-  .numbered-heading::before {
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-  
-  .numbered-heading:hover::before {
-    transform: translateX(5px);
-    color: var(--accent-color);
-  }
-  
-  /* Enhanced contact link hover effects */
-  .contact-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
-    transition: width 0.3s ease;
-  }
-  
-  .contact-link:hover::after {
-    width: 80%;
-  }
-  
-  /* Experience tab styling */
-  .experience-header {
-      margin-bottom: 25px;
-      position: relative;
-  }
-  
-  .experience-header::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 50px;
-      height: 2px;
-      background-color: var(--secondary-color);
-  }
-  
-  .experience-header h3 {
-      margin-bottom: 5px;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--lightest-slate);
-  }
-  
-  .company-name {
-      color: var(--secondary-color);
-      transition: all 0.3s ease;
-  }
-  
-  .experience-header h4 {
-      display: flex;
-      align-items: center;
-      margin-bottom: 0;
-      font-size: 14px;
-      font-weight: 400;
-      font-family: var(--font-mono);
-      color: var(--light-slate);
-  }
-  
-  .experience-header h4 i {
-      margin-right: 10px;
-      color: var(--secondary-color);
-  }
-  
-  .experience-list {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-  }
-  
-  .experience-list li {
-      position: relative;
-      padding-left: 30px;
-      margin-bottom: 15px;
-      transition: transform 0.2s ease;
-  }
-  
-  .experience-list li:before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: var(--secondary-color);
-      font-size: 20px;
-  }
-  
-  .experience-list li:hover {
-      transform: translateX(5px);
-      color: var(--lightest-slate);
-  }
-  
-  /* Certification styling */
-  .cert-badge {
-      position: relative;
-      margin-right: 25px;
-  }
-  
-  .cert-badge::after {
-      content: '';
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      border: 1px dashed var(--secondary-color);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: rotate 10s linear infinite;
+}
+
+.contact-title {
+  font-size: clamp(40px, 5vw, 60px);
+  color: var(--lightest-slate);
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.contact-subtitle {
+  color: var(--secondary-color);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+}
+
+.btn-text {
+  margin-right: 10px;
+}
+
+.btn-icon {
+  transition: transform 0.3s ease;
+}
+
+.contact-btn:hover .btn-icon {
+  transform: translateX(5px);
+}
+
+/* Mobile responsiveness enhancements */
+@media screen and (max-width: 768px) {
+  .mobile-nav-links li {
+      transform: translateX(50px);
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition-delay: calc(var(--i) * 0.1s);
   }
-  
-  .cert-card:hover .cert-badge::after {
-      opacity: 0.5;
+
+  .mobile-nav.active .mobile-nav-links li {
+      transform: translateX(0);
+      opacity: 1;
   }
-  
-  @keyframes rotate {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
-  }
-  
-  .cert-meta {
-      display: flex;
+
+  .tab-list-button {
       flex-direction: column;
-      gap: 5px;
+      height: auto;
+      padding: 10px;
   }
-  
-  .cert-meta p {
-      margin: 0;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      color: var(--light-slate);
+
+  .tab-icon {
+      margin-right: 0;
+      margin-bottom: 5px;
   }
-  
-  .cert-meta p i {
-      color: var(--secondary-color);
-      margin-right: 8px;
-      font-size: 14px;
+
+  .contact-links {
+      flex-wrap: wrap;
+      gap: 15px;
   }
-  
-  .credential-id {
-      font-family: var(--font-mono);
-      color: var(--secondary-color);
-      opacity: 0.8;
-  }
-  
-  .cert-actions {
-      margin-top: 15px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-  }
-  
-  .cert-card:hover .cert-actions {
-      opacity: 1;
-      transform: translateY(0);
-  }
-  
-  .cert-link {
-      display: inline-block;
-      color: var(--secondary-color);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 5px 10px;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-      background-color: var(--green-tint);
-  }
-  
-  .cert-link:hover {
-      background-color: var(--secondary-color);
-      color: var(--navy);
-  }
-  
-  .cert-link i {
-      margin-right: 5px;
-  }
-  
-  .cert-footer {
-      text-align: center;
-      margin-top: 60px;
-  }
-  
-  .cert-coming-soon {
-      font-style: italic;
-      margin-bottom: 25px;
-      color: var(--light-slate);
-      position: relative;
-      display: inline-block;
-      padding: 0 30px;
-  }
-  
-  /* Contact section enhancements */
-  .contact-wrapper {
-      position: relative;
-      overflow: hidden;
-      padding: 60px 40px;
-      border-radius: 12px;
-  }
-  
-  .contact-wrapper::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, var(--secondary-color), transparent, var(--accent-color), transparent, var(--secondary-color));
-      background-size: 400%;
-      border-radius: 12px;
-      z-index: -1;
-      filter: blur(10px);
-      opacity: 0.15;
-      transition: opacity 0.3s ease;
-      animation: borderAnimation 10s linear infinite;
-  }
-  
-  .contact-wrapper:hover::before {
-      opacity: 0.3;
-  }
-  
-  @keyframes borderAnimation {
-      0% {
-          background-position: 0 0;
-      }
-      100% {
-          background-position: 400% 0;
-      }
-  }
-  
-  .contact-header {
-      margin-bottom: 30px;
-  }
-  
-  .contact-title {
-      font-size: clamp(40px, 5vw, 60px);
-      color: var(--lightest-slate);
-      margin-bottom: 20px;
-      font-weight: 700;
-      letter-spacing: -1px;
-  }
-  
-  .contact-subtitle {
-      color: var(--secondary-color);
-      font-family: var(--font-mono);
-      font-size: 16px;
-      font-weight: 400;
-      margin-bottom: 10px;
-      position: relative;
-      display: inline-block;
-  }
-  
-  .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 200px;
-  }
-  
-  .btn-text {
-      margin-right: 10px;
-  }
-  
-  .btn-icon {
-      transition: transform 0.3s ease;
-  }
-  
-  .contact-btn:hover .btn-icon {
-      transform: translateX(5px);
-  }
-  
-  /* Mobile responsiveness enhancements */
-  @media screen and (max-width: 768px) {
-      .mobile-nav-links li {
-          transform: translateX(50px);
-          opacity: 0;
-          transition: transform 0.3s ease, opacity 0.3s ease;
-          transition-delay: calc(var(--i) * 0.1s);
-      }
-  
-      .mobile-nav.active .mobile-nav-links li {
-          transform: translateX(0);
-          opacity: 1;
-      }
-  
-      .tab-list-button {
-          flex-direction: column;
-          height: auto;
-          padding: 10px;
-      }
-  
-      .tab-icon {
-          margin-right: 0;
-          margin-bottom: 5px;
-      }
-  
-      .contact-links {
-          flex-wrap: wrap;
-          gap: 15px;
-      }
-  }
+}

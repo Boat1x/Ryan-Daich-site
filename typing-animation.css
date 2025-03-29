@@ -1,0 +1,71 @@
+/* Smooth typing animation styles */
+
+/* Remove ALL vertical bars throughout the site */
+.hero-content:before,
+.hero-content:after,
+.hero-title:before,
+.hero-title:after,
+.typing-element:before, 
+.typing-element:after,
+section:before,
+section:after,
+.hero:before,
+.hero:after,
+#home:before,
+#home:after {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
+    background: none !important;
+}
+
+/* Target specific vertical bar shown in the screenshot */
+.hero:before, 
+.hero-content:before {
+    display: none !important;
+    opacity: 0 !important;
+    content: none !important;
+}
+
+/* Fixed height container for typing animation */
+.typing-container {
+    height: 90px; /* Adjust height based on your font size */
+    position: relative;
+    margin-bottom: 20px;
+    overflow: visible; /* Allow the text to be visible */
+}
+
+/* Typing element styles */
+.typing-element {
+    color: var(--slate);
+    position: relative; /* Not absolute, so it's visible */
+    display: block;
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.1;
+    font-family: var(--font-heading);
+    white-space: nowrap;
+}
+
+/* Hide the cursor */
+.typed-cursor {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Smooth typed fade-out animation */
+.typed-fade-out {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* Ensure consistent text color when typing */
+.typed-strings {
+    color: var(--slate);
+}

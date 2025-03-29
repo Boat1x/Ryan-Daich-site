@@ -6,6 +6,9 @@
     <title>Ryan Daich - Cybersecurity Professional</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <link href="typing-animation.css" rel="stylesheet">
+    <!-- Add typed.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -28,7 +31,7 @@
                     <li><a href="#skills"><span>05.</span> Skills</a></li>
                     <li><a href="#certifications"><span>06.</span> Certifications</a></li>
                     <li><a href="#contact"><span>07.</span> Contact</a></li>
-                    <li><a href="#" class="resume-button">Resume</a></li>
+                    <li><a href="ryandaich-resume.pdf" class="resume-button" download>Resume</a></li>
                 </ul>
             </nav>
             
@@ -51,7 +54,7 @@
             <li><a href="#skills"><span>05.</span> Skills</a></li>
             <li><a href="#certifications"><span>06.</span> Certifications</a></li>
             <li><a href="#contact"><span>07.</span> Contact</a></li>
-            <li><a href="#" class="resume-button">Resume</a></li>
+            <li><a href="ryandaich-resume.pdf" class="resume-button" download>Resume</a></li>
         </ul>
     </div>
     
@@ -61,7 +64,9 @@
             <div class="hero-content">
                 <h1>Hi, my name is</h1>
                 <h2 class="hero-title">Ryan Daich.</h2>
-                <h3 class="hero-title" style="color: var(--slate);">I secure the digital world.</h3>
+                <div class="typing-container">
+                    <h3 class="hero-title typing-element"></h3>
+                </div>
                 <p class="hero-description">
                     I'm a cybersecurity specialist and computer science student specializing in identity & access management, threat detection, and incident response. Currently, I'm focused on building secure IT infrastructures and advocating for better cybersecurity practices at <a href="#" style="color: var(--secondary-color); text-decoration: none;">Manhattanville University</a>.
                 </p>
@@ -225,7 +230,6 @@
                         <li>React</li>
                         <li>Node.js</li>
                         <li>Git</li>
-                        
                     </ul>
                 </div>
                 <div class="skill-card">
@@ -373,11 +377,9 @@
                 <h2 class="contact-title">Get In Touch</h2>
                 <h3 class="contact-subtitle">07. What's Next?</h3>
                 <p class="contact-text">
-                    I’m currently an incoming Cybersecurity Intern at New York Life. If you have any questions, want to connect, or just want to say hi, feel free to reach out—I’d be happy to chat!
-
-
+                    I'm currently an incoming Cybersecurity Intern at New York Life. If you have any questions, want to connect, or just want to say hi, feel free to reach out—I'd be happy to chat!
                 </p>
-                <a href="mailto:Ryandaich1@gmail.com" class="btn contact-btn">
+                <a href="https://www.linkedin.com/in/ryan-daich" target="_blank" class="btn contact-btn">
                     <span class="btn-text">Say Hello</span>
                     <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
                 </a>
@@ -392,7 +394,6 @@
                 <a href="https://www.linkedin.com/in/ryan-daich" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/Boat1x/" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="mailto:Ryandaich1@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="tel:9293273817"><i class="fas fa-phone"></i></a>
             </div>
             <div class="footer-text">
                 <p>Designed & Built by Ryan Daich</p>
@@ -406,7 +407,8 @@
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- JavaScript -->
+    <!-- JavaScript - load these at the end for better performance -->
     <script src="script.js"></script>
+    <script src="typing-animation.js"></script>
 </body>
 </html>

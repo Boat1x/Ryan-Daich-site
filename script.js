@@ -1,38 +1,5 @@
 // Main JavaScript file for Ryan Daich's portfolio website
 document.addEventListener('DOMContentLoaded', function() {
-    // Fix navigation duplication issue
-    const removeExtraNavLinks = () => {
-        // Remove any duplicate navigation link sets that appear directly as children of body
-        const directNavLinks = document.querySelectorAll('body > a[href^="#"]');
-        directNavLinks.forEach(link => {
-            if (link.parentNode === document.body) {
-                document.body.removeChild(link);
-            }
-        });
-        
-        // Remove any extra resume buttons
-        const extraResumeButtons = document.querySelectorAll('body > .resume-button');
-        extraResumeButtons.forEach(button => {
-            if (button.parentNode === document.body) {
-                document.body.removeChild(button);
-            }
-        });
-        
-        // Remove any nav lists outside containers
-        const outsideNavLists = document.querySelectorAll('body > ul');
-        outsideNavLists.forEach(list => {
-            if (list.parentNode === document.body && 
-                !list.classList.contains('nav-links') && 
-                !list.classList.contains('mobile-nav-links')) {
-                document.body.removeChild(list);
-            }
-        });
-    };
-    
-    // Run cleanup on load and after a short delay
-    removeExtraNavLinks();
-    setTimeout(removeExtraNavLinks, 100);
-    
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
     const mobileNav = document.querySelector('.mobile-nav');
@@ -183,11 +150,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Run cleanup again after everything is loaded
-    window.addEventListener('load', removeExtraNavLinks);
-    
-    // Prevent navigation duplication if page is refreshed
-    window.addEventListener('beforeunload', () => {
-        removeExtraNavLinks();
+    // Configure email mailto link
+    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+    emailLinks.forEach(link => {
+        const email = 'Ryandaich1@gmail.com';
+        const subject = 'Getting in touch from your website';
+        const body = 'Hi Ryan,\n\nI came across your portfolio website and would like to connect.\n\n';
+        
+        link.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
 });
