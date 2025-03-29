@@ -6,13 +6,12 @@
     <title>Ryan Daich - Cybersecurity Professional</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
-    <!-- No additional stylesheet reference to keep it simple -->
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">
+            <a href="#home" class="logo">
                 <div class="logo-container">
                     <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18 0L0 10V26L18 36L36 26V10L18 0ZM14 27.38L7 23.57V17.31L14 21.12V27.38ZM7 15.31V12.97L14 16.77V19.12L7 15.31ZM16 28.88V22.61L22.03 19.31L28 22.63V28.89L22 32.19L16 28.88ZM29 23.57L22 19.77V16.42L29 20.23V23.57ZM16 8.72L22.03 12.03L16 15.33L9.97 12.03L16 8.72ZM24 14.12L30 10.34V13.67L24 17.46V14.12ZM29 8.31L22 12.12V8.78L25.97 6.5L29 8.31ZM9 13.67V10.34L15 14.12V17.46L9 13.67ZM9 8.31L12.03 6.5L16 8.78V12.12L9 8.31Z" fill="#64ffda"/>
@@ -24,9 +23,9 @@
                 <ul class="nav-links">
                     <li><a href="#home"><span>01.</span> Home</a></li>
                     <li><a href="#about"><span>02.</span> About</a></li>
-                    <li><a href="#experience"><span>03.</span> Experience</a></li>
-                    <li><a href="#skills"><span>04.</span> Skills</a></li>
-                    <li><a href="#education"><span>05.</span> Education</a></li>
+                    <li><a href="#education"><span>03.</span> Education</a></li>
+                    <li><a href="#experience"><span>04.</span> Experience</a></li>
+                    <li><a href="#skills"><span>05.</span> Skills</a></li>
                     <li><a href="#certifications"><span>06.</span> Certifications</a></li>
                     <li><a href="#contact"><span>07.</span> Contact</a></li>
                     <li><a href="#" class="resume-button">Resume</a></li>
@@ -47,9 +46,9 @@
         <ul class="mobile-nav-links">
             <li><a href="#home"><span>01.</span> Home</a></li>
             <li><a href="#about"><span>02.</span> About</a></li>
-            <li><a href="#experience"><span>03.</span> Experience</a></li>
-            <li><a href="#skills"><span>04.</span> Skills</a></li>
-            <li><a href="#education"><span>05.</span> Education</a></li>
+            <li><a href="#education"><span>03.</span> Education</a></li>
+            <li><a href="#experience"><span>04.</span> Experience</a></li>
+            <li><a href="#skills"><span>05.</span> Skills</a></li>
             <li><a href="#certifications"><span>06.</span> Certifications</a></li>
             <li><a href="#contact"><span>07.</span> Contact</a></li>
             <li><a href="#" class="resume-button">Resume</a></li>
@@ -95,31 +94,13 @@
                     <p>
                         Here are a few technologies I've been working with recently:
                     </p>
-                    <ul style="display: grid; grid-template-columns: repeat(2, minmax(140px, 200px)); gap: 0px 10px; padding: 0; margin: 20px 0 0 0; overflow: hidden; list-style: none;">
-                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
-                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
-                            Python
-                        </li>
-                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
-                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
-                            Active Directory
-                        </li>
-                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
-                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
-                            Kali Linux
-                        </li>
-                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
-                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
-                            Microsoft Defender XDR
-                        </li>
-                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
-                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
-                            Java
-                        </li>
-                        <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: var(--font-mono); font-size: 13px;">
-                            <span style="position: absolute; left: 0; color: var(--secondary-color);">▹</span>
-                            Wireshark
-                        </li>
+                    <ul class="skills-list">
+                        <li>Python</li>
+                        <li>Active Directory</li>
+                        <li>Kali Linux</li>
+                        <li>Microsoft Defender XDR</li>
+                        <li>Java</li>
+                        <li>Wireshark</li>
                     </ul>
                 </div>
                 <div class="about-img">
@@ -131,28 +112,57 @@
         </div>
     </section>
 
+    <!-- Education Section -->
+    <section id="education" class="section" style="background-color: var(--dark-navy);">
+        <div class="container">
+            <h2 class="numbered-heading education">My Education</h2>
+            <div class="education-card">
+                <h3>Manhattanville University</h3>
+                <h4>Bachelor of Science: Computer Science</h4>
+                <p><i class="fas fa-calendar-alt"></i> August 2022 - May 2026 (Anticipated)</p>
+                <p><strong>Minors:</strong> Data Science and Communication Studies</p>
+                <p><strong>Academic Awards:</strong></p>
+                <ul>
+                    <li>Dean's List - 2023 and 2024</li>
+                    <li>Sister Mary Clark Scholars -- Educational Scholarship Award 2022, 2023, and 2024</li>
+                </ul>
+                <p><strong>Relevant Coursework:</strong></p>
+                <div class="coursework-grid">
+                    <div class="course-box">Cybersecurity and Networking</div>
+                    <div class="course-box">Computer Programming I & II</div>
+                    <div class="course-box">Discrete Structures</div>
+                    <div class="course-box">Computer System Architecture</div>
+                    <div class="course-box">Natural Language Processing</div>
+                    <div class="course-box">Foundations of Deep Learning</div>
+                    <div class="course-box">Computation in Data Science</div>
+                    <div class="course-box">Database Design & Construction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Experience Section -->
-    <section id="experience" class="section" style="background-color: var(--dark-navy);">
+    <section id="experience" class="section">
         <div class="container">
             <h2 class="numbered-heading experience">Where I've Worked</h2>
             <div class="experience-tabs">
                 <div class="tab-list" role="tablist">
                     <div class="tab-list-item" role="presentation">
-                        <button class="tab-list-button active" id="tab-0" type="button" role="tab" aria-selected="true">MetroPlus</button>
+                        <button class="tab-list-button active" id="tab-0" type="button" role="tab" aria-selected="true">MetroPlus Health</button>
                     </div>
                     <div class="tab-list-item" role="presentation">
                         <button class="tab-list-button" id="tab-1" type="button" role="tab" aria-selected="false">Manhattanville IT</button>
                     </div>
                     <div class="tab-list-item" role="presentation">
-                        <button class="tab-list-button" id="tab-2" type="button" role="tab" aria-selected="false">Cyber Club</button>
+                        <button class="tab-list-button" id="tab-2" type="button" role="tab" aria-selected="false">Manhattanville Cybersecurity Club</button>
                     </div>
                 </div>
 
                 <div class="tab-content">
                     <div class="tab-panel active" id="panel-0" role="tabpanel" aria-labelledby="tab-0">
-                        <h3>IT Team Lead Intern <span style="color: var(--secondary-color);">@MetroPlus Health Plan</span></h3>
+                        <h3>IT Team Lead Intern <span class="company-name">- MetroPlus Health Plan</span></h3>
                         <h4>June 2024 - Present</h4>
-                        <ul>
+                        <ul class="experience-list">
                             <li>Led and managed a team of interns coordinating daily tasks and ensuring all IT solutions are resolved.</li>
                             <li>Assisted networking team to configure and deploy 256-bit encryption for all end-user machines.</li>
                             <li>Managed new user accounts and permissions within MS Active Directory.</li>
@@ -161,9 +171,9 @@
                         </ul>
                     </div>
                     <div class="tab-panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" hidden>
-                        <h3>Student Cybersecurity Analyst <span style="color: var(--secondary-color);">@Manhattanville University</span></h3>
+                        <h3>Student Cybersecurity Analyst <span class="company-name">-  Manhattanville University</span></h3>
                         <h4>September 2023 - Present</h4>
-                        <ul>
+                        <ul class="experience-list">
                             <li>Monitored, analyzed, and responded to security incidents using Microsoft Defender XDR, Sentinel, and Wazuh.</li>
                             <li>Investigated and mitigated phishing attempts, ran controlled phishing simulations, and trained students and faculty.</li>
                             <li>Deployed and configured security agents across endpoints, ensuring proactive threat detection.</li>
@@ -172,9 +182,9 @@
                         </ul>
                     </div>
                     <div class="tab-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
-                        <h3>Founder & President <span style="color: var(--secondary-color);">@Manhattanville Cybersecurity Club</span></h3>
+                        <h3>Founder & President <span class="company-name">- Manhattanville Cybersecurity Club</span></h3>
                         <h4>October 2023 - Present</h4>
-                        <ul>
+                        <ul class="experience-list">
                             <li>Founded and established the university's first cybersecurity-focused student organization.</li>
                             <li>Led the ValiGuard phishing campaign to boost cybersecurity awareness through training and phishing simulations.</li>
                             <li>Organized weekly workshops and guest speaker events with cyber industry professionals.</li>
@@ -188,7 +198,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section id="skills" class="section" style="background-color: var(--dark-navy);">
         <div class="container">
             <h2 class="numbered-heading skills">What I Can Do</h2>
             <div class="skills-container">
@@ -210,16 +220,21 @@
                         <li>Java</li>
                         <li>SQL</li>
                         <li>HTML/CSS</li>
-                        <li>PHP</li>
-                        <li>PowerShell</li>
+                        <li>Javascript</li>
+                        <li>Typescript</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>Git</li>
+                        
                     </ul>
                 </div>
                 <div class="skill-card">
                     <h3>Tools & Software</h3>
                     <ul>
                         <li>Microsoft Defender XDR</li>
+                        <li>Wazuh</li>
+                        <li>VS Code</li>
                         <li>Wireshark</li>
-                        <li>Nmap</li>
                         <li>Metasploit</li>
                         <li>Armitage</li>
                         <li>Microsoft Office Suite</li>
@@ -229,11 +244,10 @@
                     <h3>Operating Systems</h3>
                     <ul>
                         <li>Windows</li>
-                        <li>Kali Linux</li>
+                        <li>Linux (Kali and Fedora)</li>
                         <li>Parrot OS</li>
-                        <li>Ubuntu</li>
                         <li>MAC OS</li>
-                        <li>Oracle VirtualBox</li>
+                        <li>VirtualBox & VMWare</li>
                     </ul>
                 </div>
                 <div class="skill-card">
@@ -257,35 +271,6 @@
                         <li>Strategic Planning</li>
                         <li>Event Organization</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="section" style="background-color: var(--dark-navy);">
-        <div class="container">
-            <h2 class="numbered-heading education">My Education</h2>
-            <div class="education-card">
-                <h3>Manhattanville University</h3>
-                <h4>Bachelor of Science: Computer Science</h4>
-                <p><i class="fas fa-calendar-alt"></i> August 2022 - May 2026 (Anticipated)</p>
-                <p><strong>Minors:</strong> Data Science and Communication Studies</p>
-                <p><strong>Academic Awards:</strong></p>
-                <ul>
-                    <li>Dean's List - 2023 and 2024</li>
-                    <li>Sister Mary Clark Scholars -- Educational Scholarship Award 2022, 2023, and 2024</li>
-                </ul>
-                <p><strong>Relevant Coursework:</strong></p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
-                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Cybersecurity and Networking</div>
-                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Computer Programming I & II</div>
-                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Discrete Structures</div>
-                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Computer System Architecture</div>
-                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Natural Language Processing</div>
-                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Foundations of Deep Learning</div>
-                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Computation in Data Science</div>
-                    <div style="background-color: var(--lightest-navy); padding: 10px; border-radius: 4px; font-size: 14px;">Database Design & Construction</div>
                 </div>
             </div>
         </div>
@@ -337,14 +322,14 @@
                     </div>
                 </div>
             </div>
-            <div style="margin-top: 40px; text-align: center;">
-                <p style="margin-bottom: 20px; font-style: italic;">Currently preparing for: CompTIA Security+ Certification</p>
+            <div class="cert-footer">
+                <p class="cert-coming-soon">Currently preparing for: CompTIA Security+ Certification</p>
                 <a href="#contact" class="btn">View All Credentials</a>
             </div>
         </div>
     </section>
 
-    <!-- Organizations Section -->
+    <!-- Organizations Section (Optional) -->
     <section id="organizations" class="section" style="background-color: var(--dark-navy);">
         <div class="container">
             <h2 class="numbered-heading organizations">Organizations & Leadership</h2>
@@ -388,9 +373,14 @@
                 <h2 class="contact-title">Get In Touch</h2>
                 <h3 class="contact-subtitle">07. What's Next?</h3>
                 <p class="contact-text">
-                    I'm currently looking for new opportunities in the cybersecurity field. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                    I’m currently an incoming Cybersecurity Intern at New York Life. If you have any questions, want to connect, or just want to say hi, feel free to reach out—I’d be happy to chat!
+
+
                 </p>
-                <a href="mailto:Ryandaich1@gmail.com" class="btn">Say Hello</a>
+                <a href="mailto:Ryandaich1@gmail.com" class="btn contact-btn">
+                    <span class="btn-text">Say Hello</span>
+                    <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                </a>
             </div>
         </div>
     </section>
@@ -400,7 +390,7 @@
         <div class="container">
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/ryan-daich" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/Boat1x/" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="mailto:Ryandaich1@gmail.com"><i class="fas fa-envelope"></i></a>
                 <a href="tel:9293273817"><i class="fas fa-phone"></i></a>
             </div>

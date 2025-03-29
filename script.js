@@ -1,41 +1,37 @@
 // Main JavaScript file for Ryan Daich's portfolio website
 document.addEventListener('DOMContentLoaded', function() {
-    // Clean up any unwanted navigation elements 
-    function cleanupDuplicateNavigation() {
-        // Target and remove duplicate navigation links
-        const directNavItems = [
-            ...document.querySelectorAll('body > a[href^="#"]'),
-            ...document.querySelectorAll('body > .resume-button'),
-            ...document.querySelectorAll('body > ul:not(.nav-links):not(.mobile-nav-links)')
-        ];
-        
-        directNavItems.forEach(element => {
-            if (element && element.parentNode) {
-                element.parentNode.removeChild(element);
+    // Fix navigation duplication issue
+    const removeExtraNavLinks = () => {
+        // Remove any duplicate navigation link sets that appear directly as children of body
+        const directNavLinks = document.querySelectorAll('body > a[href^="#"]');
+        directNavLinks.forEach(link => {
+            if (link.parentNode === document.body) {
+                document.body.removeChild(link);
             }
         });
         
-        // Find all links outside the main navigation containers
-        const allLinks = document.querySelectorAll('a[href^="#"]');
-        allLinks.forEach(link => {
-            // Only remove if it's not inside our proper containers
-            if (!link.closest('.nav-container') && 
-                !link.closest('.mobile-nav') && 
-                !link.closest('.hero-cta') && 
-                !link.closest('section') &&
-                !link.closest('footer') &&
-                !link.classList.contains('back-to-top')) {
-                
-                if (link && link.parentNode) {
-                    link.parentNode.removeChild(link);
-                }
+        // Remove any extra resume buttons
+        const extraResumeButtons = document.querySelectorAll('body > .resume-button');
+        extraResumeButtons.forEach(button => {
+            if (button.parentNode === document.body) {
+                document.body.removeChild(button);
             }
         });
-    }
+        
+        // Remove any nav lists outside containers
+        const outsideNavLists = document.querySelectorAll('body > ul');
+        outsideNavLists.forEach(list => {
+            if (list.parentNode === document.body && 
+                !list.classList.contains('nav-links') && 
+                !list.classList.contains('mobile-nav-links')) {
+                document.body.removeChild(list);
+            }
+        });
+    };
     
-    // Run cleanup immediately and after a short delay
-    cleanupDuplicateNavigation();
-    setTimeout(cleanupDuplicateNavigation, 100);
+    // Run cleanup on load and after a short delay
+    removeExtraNavLinks();
+    setTimeout(removeExtraNavLinks, 100);
     
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
@@ -43,19 +39,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.querySelector('.overlay');
     const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
     
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
-    });
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+    }
     
-    overlay.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileNav.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
     
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -88,27 +88,33 @@ document.addEventListener('DOMContentLoaded', function() {
             tab.classList.add('active');
             tab.setAttribute('aria-selected', 'true');
             panels[index].hidden = false;
-            panels[index].classList.add('active');
+            
+            // Add a small delay for smooth animation
+            setTimeout(() => {
+                panels[index].classList.add('active');
+            }, 50);
         });
     });
     
     // Back to Top Button
     const backToTopButton = document.querySelector('.back-to-top');
     
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
-        }
-    });
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
     
-    backToTopButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    
-    // Smooth Scroll
+    // Smooth Scroll for all hash links
     const scrollLinks = document.querySelectorAll('a[href^="#"]');
     
     scrollLinks.forEach(link => {
@@ -162,6 +168,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Run another cleanup after everything is loaded
-    window.addEventListener('load', cleanupDuplicateNavigation);
+    // Add hover effects to certification cards
+    const certCards = document.querySelectorAll('.cert-card');
+    
+    certCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-7px)';
+            this.style.boxShadow = '0 20px 40px -20px var(--navy-shadow)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 10px 30px -15px var(--navy-shadow)';
+        });
+    });
+    
+    // Run cleanup again after everything is loaded
+    window.addEventListener('load', removeExtraNavLinks);
+    
+    // Prevent navigation duplication if page is refreshed
+    window.addEventListener('beforeunload', () => {
+        removeExtraNavLinks();
+    });
 });

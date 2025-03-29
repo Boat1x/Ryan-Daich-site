@@ -4,7 +4,7 @@
 :root {
     --primary-color: #0a192f;
     --secondary-color: #64ffda;
-    --accent-color: #FF5E5B; /* New accent color */
+    --accent-color: #FF5E5B; 
     --dark-navy: #020c1b;
     --navy: #0a192f;
     --light-navy: #112240;
@@ -35,31 +35,6 @@ body {
     color: var(--slate);
     line-height: 1.6;
     overflow-x: hidden;
-}
-
-/* Hide unwanted navigation elements */
-body > a[href^="#"]:not(.back-to-top),
-body > ul:not(.nav-links):not(.mobile-nav-links), 
-body > .resume-button,
-a[href^="#skills"]:not(.nav-links a):not(.mobile-nav-links a):not(.hero-cta a),
-a[href^="#education"]:not(.nav-links a):not(.mobile-nav-links a):not(.hero-cta a),
-a[href^="#certifications"]:not(.nav-links a):not(.mobile-nav-links a):not(.hero-cta a),
-a[href^="#contact"]:not(.nav-links a):not(.mobile-nav-links a):not(.hero-cta a):not(.btn),
-a[href^="#home"]:not(.nav-links a):not(.mobile-nav-links a):not(.hero-cta a),
-a[href^="#about"]:not(.nav-links a):not(.mobile-nav-links a):not(.hero-cta a),
-a[href^="#experience"]:not(.nav-links a):not(.mobile-nav-links a):not(.hero-cta a),
-a[href^="#projects"]:not(.nav-links a):not(.mobile-nav-links a):not(.hero-cta a),
-a[href^="#organizations"]:not(.nav-links a):not(.mobile-nav-links a):not(.hero-cta a) {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    position: absolute !important;
-    left: -9999px !important;
-    height: 0 !important;
-    width: 0 !important;
-    overflow: hidden !important;
-    z-index: -9999 !important;
 }
 
 /* SCROLLBAR STYLING */
@@ -141,11 +116,11 @@ a[href^="#organizations"]:not(.nav-links a):not(.mobile-nav-links a):not(.hero-c
     background: linear-gradient(90deg, var(--secondary-color), transparent);
 }
 
-.numbered-heading.about::before { content: '01.'; }
-.numbered-heading.experience::before { content: '02.'; }
-.numbered-heading.skills::before { content: '03.'; }
-.numbered-heading.education::before { content: '04.'; }
-.numbered-heading.certifications::before { content: '05.'; }
+.numbered-heading.about::before { content: '02.'; }
+.numbered-heading.education::before { content: '03.'; }
+.numbered-heading.experience::before { content: '04.'; }
+.numbered-heading.skills::before { content: '05.'; }
+.numbered-heading.certifications::before { content: '06.'; }
 .numbered-heading.organizations::before { content: '06.'; }
 .numbered-heading.contact::before { content: '07.'; }
 
@@ -480,6 +455,31 @@ header {
     transform-origin: bottom left;
 }
 
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 200px));
+    gap: 0px 10px;
+    padding: 0;
+    margin: 20px 0 0 0;
+    overflow: hidden;
+    list-style: none;
+}
+
+.skills-list li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+}
+
+.skills-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+}
+
 .about-img {
     position: relative;
     max-width: 300px;
@@ -582,6 +582,10 @@ header {
     color: var(--lightest-slate);
 }
 
+.company-name {
+    color: var(--secondary-color);
+}
+
 .tab-panel h4 {
     margin-bottom: 20px;
     font-size: 14px;
@@ -594,19 +598,19 @@ header {
     margin-bottom: 15px;
 }
 
-.tab-panel ul {
+.experience-list {
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-.tab-panel li {
+.experience-list li {
     position: relative;
     padding-left: 30px;
     margin-bottom: 10px;
 }
 
-.tab-panel li::before {
+.experience-list li::before {
     content: '▹';
     position: absolute;
     left: 0;
@@ -714,6 +718,27 @@ header {
     color: var(--secondary-color);
 }
 
+.coursework-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.course-box {
+    background-color: var(--lightest-navy);
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: var(--transition);
+    border-left: 2px solid transparent;
+}
+
+.course-box:hover {
+    background-color: var(--navy);
+    border-left: 2px solid var(--secondary-color);
+    transform: translateX(5px);
+}
+
 /* CERTIFICATIONS SECTION */
 .certifications-container {
     display: grid;
@@ -747,6 +772,12 @@ header {
     color: var(--secondary-color);
     font-weight: 600;
     font-size: 16px;
+    transition: var(--transition);
+}
+
+.cert-card:hover .cert-logo {
+    background-color: var(--secondary-color);
+    color: var(--navy);
 }
 
 .cert-details h4 {
@@ -754,6 +785,17 @@ header {
     margin-bottom: 5px;
     font-size: 16px;
     font-weight: 500;
+}
+
+.cert-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.cert-coming-soon {
+    margin-bottom: 20px;
+    font-style: italic;
+    color: var(--light-slate);
 }
 
 /* CONTACT SECTION */
@@ -779,6 +821,24 @@ header {
 
 .contact-text {
     margin-bottom: 50px;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-text {
+    margin-right: 10px;
+}
+
+.btn-icon {
+    transition: transform 0.3s ease;
+}
+
+.contact-btn:hover .btn-icon {
+    transform: translateX(5px);
 }
 
 /* FOOTER */
@@ -858,10 +918,6 @@ footer {
     
     .numbered-heading::after {
         width: 200px;
-    }
-    
-    .sidebar {
-        display: none;
     }
 }
 
