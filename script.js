@@ -159,4 +159,42 @@ document.addEventListener('DOMContentLoaded', function() {
         
         link.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
+    
+    // Add resume download handler for any links with the resume-button class
+    const resumeButtons = document.querySelectorAll('.resume-button');
+    resumeButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Only prevent default if the direct download doesn't work
+            const isDownloadSupported = 'download' in document.createElement('a');
+            if (!isDownloadSupported) {
+                e.preventDefault();
+                downloadResume();
+            }
+        });
+    });
 });
+
+// Properly implemented download function
+function downloadResume() {
+    const resumePath = 'resume/Ryan_Daich_Resume SITE.pdf';
+    const downloadName = 'Ryan_Daich_Resume.pdf';
+    
+    // Try using the Fetch API first
+    fetch(resumePath)
+        .then(response => response.blob())
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = downloadName;
+            document.body.appendChild(link);
+            link.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(link);
+        })
+        .catch(err => {
+            console.error('Error downloading resume:', err);
+            // Fallback to direct window.open
+            window.open(resumePath, '_blank');
+        });
+}

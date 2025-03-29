@@ -3,6 +3,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if the typing element exists
     const typingElement = document.querySelector('.typing-element');
     
+    // Add CSS styles for text overflow and wrapping
+    const style = document.createElement('style');
+    style.textContent = `
+        .typing-element {
+            max-width: 100%;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 3rem;
+            line-height: 1.2;
+            position: relative;
+            margin: 1rem 0 3rem 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 3rem;
+        }
+        .typed-cursor {
+            font-size: 3rem;
+            opacity: 1;
+            animation: blink 0.7s infinite;
+            vertical-align: text-top;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    `;
+    document.head.appendChild(style);
+    
     // Check if Typed.js is loaded
     if (typingElement && typeof Typed !== 'undefined') {
         // Create and initialize Typed instance with smoother settings
