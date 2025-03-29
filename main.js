@@ -1,10 +1,74 @@
-// Regular site functionality
+// Enhanced portfolio website script
 document.addEventListener('DOMContentLoaded', function() {
+    // Fade-in animation for sections
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -100px 0px"
+    };
+    
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          entry.target.classList.add('appear');
+          appearOnScroll.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+    
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  
+    // Clean up any unwanted navigation elements 
+    function cleanupDuplicateNavigation() {
+      // Target and remove duplicate navigation links
+      const directNavItems = [
+        ...document.querySelectorAll('body > a[href^="#"]'),
+        ...document.querySelectorAll('body > .resume-button'),
+        ...document.querySelectorAll('body > ul:not(.nav-links):not(.mobile-nav-links)')
+      ];
+      
+      directNavItems.forEach(element => {
+        if (element && element.parentNode) {
+          element.parentNode.removeChild(element);
+        }
+      });
+      
+      // Find all links outside the main navigation containers
+      const allLinks = document.querySelectorAll('a[href^="#"]');
+      allLinks.forEach(link => {
+        // Only remove if it's not inside our proper containers
+        if (!link.closest('.nav-container') && 
+            !link.closest('.mobile-nav') && 
+            !link.closest('.hero-cta') && 
+            !link.closest('section') &&
+            !link.closest('footer') &&
+            !link.classList.contains('back-to-top')) {
+          
+          if (link && link.parentNode) {
+            link.parentNode.removeChild(link);
+          }
+        }
+      });
+    }
+    
+    // Run cleanup immediately and after a short delay
+    cleanupDuplicateNavigation();
+    setTimeout(cleanupDuplicateNavigation, 100);
+    
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
     const mobileNav = document.querySelector('.mobile-nav');
     const overlay = document.querySelector('.overlay');
     const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+    
+    // Set mobile nav animation delay for each item
+    mobileLinks.forEach((link, index) => {
+      link.parentElement.style.setProperty('--i', index);
+    });
     
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
@@ -29,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
     
-    // Tabs
+    // Experience Tabs with animation
     const tabs = document.querySelectorAll('.tab-list-button');
     const panels = document.querySelectorAll('.tab-panel');
     
@@ -51,11 +115,15 @@ document.addEventListener('DOMContentLoaded', function() {
         tab.classList.add('active');
         tab.setAttribute('aria-selected', 'true');
         panels[index].hidden = false;
-        panels[index].classList.add('active');
+        
+        // Add small delay for animation to be visible
+        setTimeout(() => {
+          panels[index].classList.add('active');
+        }, 50);
       });
     });
     
-    // Back to Top Button
+    // Back to Top Button with smooth animation
     const backToTopButton = document.querySelector('.back-to-top');
     
     window.addEventListener('scroll', () => {
@@ -71,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     
-    // Scroll Animation
+    // Smooth Scroll with better animation
     const scrollLinks = document.querySelectorAll('a[href^="#"]');
     
     scrollLinks.forEach(link => {
@@ -96,141 +164,151 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
     
-    // Header Scroll Effect
+    // Header Scroll Effect with enhanced animation
     const header = document.querySelector('header');
     let lastScrollY = window.scrollY;
     
     window.addEventListener('scroll', () => {
       if (lastScrollY < window.scrollY && window.scrollY > 100) {
         header.style.transform = 'translateY(-100%)';
+        header.style.boxShadow = 'none';
       } else {
         header.style.transform = 'translateY(0)';
+        header.style.boxShadow = '0 10px 30px -10px var(--navy-shadow)';
       }
       
       lastScrollY = window.scrollY;
     });
-  });// Immediately-invoked function to clean up as early as possible
-  (function() {
-    let cleanupAttempts = 0;
-    const MAX_CLEANUP_ATTEMPTS = 20;
-  
-    function removeUnwantedNavigation() {
-      cleanupAttempts++;
-      console.log("Cleanup attempt: " + cleanupAttempts);
-  
-      // Target specifically those duplicate navigation items in the top left
-      const directNavItems = [
-        ...document.querySelectorAll('body > a[href^="#"]'),
-        ...document.querySelectorAll('body > .resume-button'),
-        ...document.querySelectorAll('body > ul')
-      ];
+    
+    // Add hover effects to skill cards
+    const skillCards = document.querySelectorAll('.skill-card');
+    
+    skillCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
+        const icon = this.querySelector('.skill-icon');
+        if (icon) {
+          icon.style.transform = 'scale(1.2)';
+        }
+      });
       
-      directNavItems.forEach(element => {
-        if (element && element.parentNode) {
-          console.log("Removing element: ", element);
-          element.parentNode.removeChild(element);
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        const icon = this.querySelector('.skill-icon');
+        if (icon) {
+          icon.style.transform = 'scale(1)';
         }
       });
-  
-      // Look for those specific links we're seeing in the screenshot
-      const specificItems = [
-        ...document.querySelectorAll('a[href^="#skills"]'),
-        ...document.querySelectorAll('a[href^="#education"]'),
-        ...document.querySelectorAll('a[href^="#certifications"]'),
-        ...document.querySelectorAll('a[href^="#contact"]')
-      ];
-  
-      specificItems.forEach(link => {
-        // Only remove if it's not inside our proper containers
-        if (!link.closest('.nav-links') && 
-            !link.closest('.mobile-nav-links') && 
-            !link.closest('.hero-cta') && 
-            !link.closest('.contact-wrapper')) {
-          
-          // Try to get the parent element
-          let target = link;
-          
-          // If it's part of a list item, remove the list item
-          if (link.parentElement && link.parentElement.tagName === 'LI') {
-            target = link.parentElement;
-          }
-          
-          // Delete the target
-          if (target && target.parentNode) {
-            console.log("Removing specific link: ", target);
-            target.parentNode.removeChild(target);
-          }
-        }
-      });
-  
-      // Targeted removal of any nav-like elements just below the body
-      const bodyChildren = Array.from(document.body.children);
-      bodyChildren.forEach(child => {
-        // Skip certain key elements
-        if (child.tagName === 'HEADER' || 
-            child.tagName === 'SECTION' || 
-            child.tagName === 'FOOTER' || 
-            child.tagName === 'SCRIPT' ||
-            child.classList.contains('overlay') ||
-            child.classList.contains('mobile-nav') ||
-            child.classList.contains('back-to-top') ||
-            child.tagName === 'STYLE') {
-          return;
+    });
+    
+    // Add hover effects to certification cards
+    const certCards = document.querySelectorAll('.cert-card');
+    
+    certCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
+        this.style.boxShadow = '0 20px 40px -20px var(--navy-shadow)';
+        
+        const logo = this.querySelector('.cert-logo');
+        if (logo) {
+          logo.style.backgroundColor = 'var(--secondary-color)';
+          logo.style.color = 'var(--navy)';
         }
         
-        // Check if this element has navigation-like links
-        const hasNavLinks = child.querySelectorAll('a[href^="#"]').length > 0;
-        
-        if (hasNavLinks) {
-          console.log("Removing navigation-like element: ", child);
-          child.parentNode.removeChild(child);
+        const actions = this.querySelector('.cert-actions');
+        if (actions) {
+          actions.style.opacity = '1';
+          actions.style.transform = 'translateY(0)';
         }
       });
-  
-      // If we still have duplicate links, try a more aggressive approach
-      if (cleanupAttempts > 5) {
-        // Find ALL navigation-like links outside our main containers and remove them
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-          if (!link.closest('.nav-container') &&
-              !link.closest('.mobile-nav') &&
-              !link.closest('.hero-cta') &&
-              !link.closest('.contact-wrapper') &&
-              !link.classList.contains('back-to-top') &&
-              link.textContent.includes('.')) { // This targets those "01. Skills" type links
-            
-            // Get the highest parent that's still safe to remove
-            let target = link;
-            let parent = link.parentElement;
-            
-            while (parent && 
-                  parent !== document.body && 
-                  !parent.classList.contains('container') &&
-                  !parent.classList.contains('section')) {
-              target = parent;
-              parent = parent.parentElement;
-            }
-            
-            if (target && target.parentNode) {
-              console.log("Aggressively removing: ", target);
-              target.parentNode.removeChild(target);
-            }
-          }
-        });
-      }
-  
-      // Only keep scheduling if we haven't tried too many times
-      if (cleanupAttempts < MAX_CLEANUP_ATTEMPTS) {
-        setTimeout(removeUnwantedNavigation, 100 * cleanupAttempts);
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 10px 30px -15px var(--navy-shadow)';
+        
+        const logo = this.querySelector('.cert-logo');
+        if (logo) {
+          logo.style.backgroundColor = 'var(--navy)';
+          logo.style.color = 'var(--secondary-color)';
+        }
+        
+        const actions = this.querySelector('.cert-actions');
+        if (actions) {
+          actions.style.opacity = '0';
+          actions.style.transform = 'translateY(10px)';
+        }
+      });
+    });
+    
+    // Typed.js effect for hero section
+    if (typeof Typed !== 'undefined') {
+      const options = {
+        strings: ['I secure the digital world.', 'I detect and respond to threats.', 'I build secure infrastructures.'],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        loop: true,
+        cursorChar: '|',
+        fadeOut: true,
+        smartBackspace: true
+      };
+      
+      const heroSubtitle = document.querySelector('.typing-text');
+      if (heroSubtitle) {
+        new Typed(heroSubtitle, options);
       }
     }
-  
-    // Try to run as early as possible
-    removeUnwantedNavigation();
-  
-    // Run after DOM content loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', removeUnwantedNavigation);
-    } else {
-      removeUnwantedNavigation();
+    
+    // Scroll progress indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    
+    if (scrollIndicator) {
+      window.addEventListener('scroll', () => {
+        const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        scrollIndicator.style.width = `${scrollPercentage}%`;
+      });
     }
-  })();
+    
+    // Initialize sections with staggered delay
+    const sections = document.querySelectorAll('.section');
+    sections.forEach((section, index) => {
+      setTimeout(() => {
+        section.classList.add('section-visible');
+      }, 100 * index);
+    });
+    
+    // Add animations to education cards
+    const educationCards = document.querySelectorAll('.education-card');
+    
+    educationCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-7px)';
+        this.style.boxShadow = '0 20px 40px -20px var(--navy-shadow)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 10px 30px -15px var(--navy-shadow)';
+      });
+    });
+    
+    // Course boxes hover effect
+    const courseBoxes = document.querySelectorAll('.course-box');
+    
+    courseBoxes.forEach(box => {
+      box.addEventListener('mouseenter', function() {
+        this.style.backgroundColor = 'var(--navy)';
+        this.style.borderLeft = '2px solid var(--secondary-color)';
+        this.style.transform = 'translateX(5px)';
+      });
+      
+      box.addEventListener('mouseleave', function() {
+        this.style.backgroundColor = 'var(--lightest-navy)';
+        this.style.borderLeft = '2px solid transparent';
+        this.style.transform = 'translateX(0)';
+      });
+    });
+    
+    // Run another cleanup after everything is loaded
+    window.addEventListener('load', cleanupDuplicateNavigation);
+  });

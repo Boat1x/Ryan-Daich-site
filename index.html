@@ -3,64 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Immediate cleanup script -->
-    <script>
-      // Immediate aggressive cleanup
-      (function() {
-        function immediateCleanup() {
-          // Remove any direct children of body that are links or lists
-          var unwantedItems = document.querySelectorAll('body > a, body > ul');
-          for (var i = 0; i < unwantedItems.length; i++) {
-            if (unwantedItems[i] && unwantedItems[i].parentNode) {
-              unwantedItems[i].parentNode.removeChild(unwantedItems[i]);
-            }
-          }
-          
-          // Specifically target those links we see in the screenshot
-          var topLeftDuplicates = document.querySelectorAll('a[href^="#skills"], a[href^="#education"], a[href^="#certifications"], a[href^="#contact"]');
-          for (var j = 0; j < topLeftDuplicates.length; j++) {
-            var link = topLeftDuplicates[j];
-            // Skip links inside our proper containers
-            if (!link.closest('.nav-links') && 
-                !link.closest('.mobile-nav-links') && 
-                !link.closest('.hero-cta') && 
-                !link.closest('.contact-wrapper')) {
-              
-              // Try to get the highest parent we can safely remove
-              var parent = link.parentElement;
-              if (parent && parent.tagName === 'LI') {
-                var listParent = parent.parentElement;
-                if (listParent) {
-                  listParent.parentNode.removeChild(listParent);
-                  continue;
-                }
-              }
-              
-              // If we couldn't find a list, just remove the link directly
-              if (link.parentNode) {
-                link.parentNode.removeChild(link);
-              }
-            }
-          }
-        }
-        
-        // Run immediately
-        immediateCleanup();
-        
-        // Run after a tiny delay to catch dynamic additions
-        setTimeout(immediateCleanup, 10);
-        setTimeout(immediateCleanup, 50);
-        setTimeout(immediateCleanup, 100);
-        
-        // Also run when DOM is loaded
-        document.addEventListener('DOMContentLoaded', immediateCleanup);
-      })();
-    </script>
-    
     <title>Ryan Daich - Cybersecurity Professional</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <!-- No additional stylesheet reference to keep it simple -->
 </head>
 <body>
     <!-- Header -->
@@ -74,16 +20,18 @@
                 </div>
             </a>
             
-            <ul class="nav-links">
-                <li><a href="#home"><span>01.</span> Home</a></li>
-                <li><a href="#about"><span>02.</span> About</a></li>
-                <li><a href="#experience"><span>03.</span> Experience</a></li>
-                <li><a href="#skills"><span>04.</span> Skills</a></li>
-                <li><a href="#education"><span>05.</span> Education</a></li>
-                <li><a href="#certifications"><span>06.</span> Certifications</a></li>
-                <li><a href="#contact"><span>07.</span> Contact</a></li>
-                <li><a href="#" class="resume-button">Resume</a></li>
-            </ul>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home"><span>01.</span> Home</a></li>
+                    <li><a href="#about"><span>02.</span> About</a></li>
+                    <li><a href="#experience"><span>03.</span> Experience</a></li>
+                    <li><a href="#skills"><span>04.</span> Skills</a></li>
+                    <li><a href="#education"><span>05.</span> Education</a></li>
+                    <li><a href="#certifications"><span>06.</span> Certifications</a></li>
+                    <li><a href="#contact"><span>07.</span> Contact</a></li>
+                    <li><a href="#" class="resume-button">Resume</a></li>
+                </ul>
+            </nav>
             
             <div class="hamburger">
                 <span></span>
@@ -120,7 +68,7 @@
                 </p>
                 <div class="hero-cta">
                     <a href="#contact" class="btn">Get In Touch</a>
-                    <a href="#projects" class="btn">Check Out My Work</a>
+                    <a href="#experience" class="btn">Check Out My Work</a>
                 </div>
             </div>
         </div>
@@ -469,6 +417,6 @@
     </a>
 
     <!-- JavaScript -->
-    <script src="main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
