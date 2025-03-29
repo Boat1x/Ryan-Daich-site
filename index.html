@@ -7,6 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
     <link href="typing-animation.css" rel="stylesheet">
+    <link href="additional_styles.css" rel="stylesheet">
     <!-- Add typed.js from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
 </head>
@@ -151,36 +152,32 @@
         <div class="container">
             <h2 class="numbered-heading experience">Where I've Work-ed</h2>
             <div class="experience-tabs">
-                
-                <!-- In the experience section tab list, add New York Life as first tab -->
-<div class="tab-list" role="tablist">
-    <div class="tab-list-item" role="presentation">
-        <button class="tab-list-button active" id="tab-0" type="button" role="tab" aria-selected="true">New York Life</button>
-    </div>
-    <div class="tab-list-item" role="presentation">
-        <button class="tab-list-button" id="tab-1" type="button" role="tab" aria-selected="false">MetroPlus Health</button>
-    </div>
-    <div class="tab-list-item" role="presentation">
-        <button class="tab-list-button" id="tab-2" type="button" role="tab" aria-selected="false">Manhattanville IT</button>
-    </div>
-    <div class="tab-list-item" role="presentation">
-        <button class="tab-list-button" id="tab-3" type="button" role="tab" aria-selected="false">Manhattanville Cybersecurity Club</button>
-    </div>
-</div>
+                <!-- Tab List -->
+                <div class="tab-list" role="tablist">
+                    <div class="tab-list-item" role="presentation">
+                        <button class="tab-list-button active" id="tab-0" type="button" role="tab" aria-selected="true">New York Life</button>
+                    </div>
+                    <div class="tab-list-item" role="presentation">
+                        <button class="tab-list-button" id="tab-1" type="button" role="tab" aria-selected="false">MetroPlus Health</button>
+                    </div>
+                    <div class="tab-list-item" role="presentation">
+                        <button class="tab-list-button" id="tab-2" type="button" role="tab" aria-selected="false">Manhattanville IT</button>
+                    </div>
+                    <div class="tab-list-item" role="presentation">
+                        <button class="tab-list-button" id="tab-3" type="button" role="tab" aria-selected="false">Manhattanville Cybersecurity Club</button>
+                    </div>
+                </div>
 
-<!-- In the tab content section, add the New York Life panel as first panel -->
-<div class="tab-content">
-    <div class="tab-panel active" id="panel-0" role="tabpanel" aria-labelledby="tab-0">
-        <h3>Cybersecurity Intern <span class="company-name">- New York Life</span></h3>
-        <h4>May 2025 - Present</h4>
-        <ul class="experience-list">
-            <li>Incoming Cybersecurity Intern at New York Life</li>
-        </ul>
-    </div>
-    
-
+                <!-- Tab Content -->
                 <div class="tab-content">
                     <div class="tab-panel active" id="panel-0" role="tabpanel" aria-labelledby="tab-0">
+                        <h3>Cybersecurity Intern <span class="company-name">- New York Life</span></h3>
+                        <h4>May 2025 - Present</h4>
+                        <ul class="experience-list">
+                            <li>Incoming Cybersecurity Intern at New York Life</li>
+                        </ul>
+                    </div>
+                    <div class="tab-panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" hidden>
                         <h3>IT Team Lead Intern <span class="company-name">- MetroPlus Health Plan</span></h3>
                         <h4>June 2024 - Present</h4>
                         <ul class="experience-list">
@@ -191,7 +188,7 @@
                             <li>Assisted InfoSec team mitigating security threats related to unauthorized access attempts.</li>
                         </ul>
                     </div>
-                    <div class="tab-panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" hidden>
+                    <div class="tab-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
                         <h3>Student Cybersecurity Analyst <span class="company-name">-  Manhattanville University</span></h3>
                         <h4>September 2023 - Present</h4>
                         <ul class="experience-list">
@@ -202,7 +199,7 @@
                             <li>Participated in Tabletop cybersecurity exercises, refining incident response strategies and enhancing campus security awareness.</li>
                         </ul>
                     </div>
-                    <div class="tab-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
+                    <div class="tab-panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" hidden>
                         <h3>Founder & President <span class="company-name">- Manhattanville Cybersecurity Club</span></h3>
                         <h4>October 2023 - Present</h4>
                         <ul class="experience-list">
@@ -423,8 +420,12 @@
         <i class="fas fa-arrow-up"></i>
     </a>
 
+    <!-- Add scroll indicator -->
+    <div class="scroll-indicator"></div>
+
     <!-- JavaScript - load these at the end for better performance -->
     <script src="script.js"></script>
     <script src="typing-animation.js"></script>
+    <script src="enhanced-script.js"></script>
 </body>
 </html>

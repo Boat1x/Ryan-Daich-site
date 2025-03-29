@@ -14,18 +14,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 'I protect critical infrastructure.',
                 'I analyze security vulnerabilities.'
             ],
-            typeSpeed: 30,           // Slower typing speed for smoother appearance
-            backSpeed: 20,           // Slower backspacing for smoother appearance
+            typeSpeed: 50,           // Typing speed
+            backSpeed: 30,           // Backspacing speed
             backDelay: 3000,         // Longer delay before backspacing
-            startDelay: 1000,        // Longer delay before starting
+            startDelay: 500,         // Short delay before starting
             loop: true,
-            showCursor: false,       // Hide the cursor completely
-            cursorChar: '',
+            showCursor: true,        // Show cursor
+            cursorChar: '|',
             smartBackspace: true,    // Only backspace what doesn't match the previous string
             shuffle: false,          // Do not shuffle for predictable animation
             fadeOut: true,           // Use fade out transition
             fadeOutClass: 'typed-fade-out',
             fadeOutDelay: 500
         });
+    } else {
+        console.error('Typed.js not loaded or typing element not found');
+        // Fallback if Typed.js is not working
+        if (typingElement) {
+            typingElement.textContent = 'I secure the digital world.';
+        }
     }
 });
