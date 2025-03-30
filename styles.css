@@ -383,9 +383,10 @@ header {
 .hero-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     max-width: 1000px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .hero-title {
@@ -406,11 +407,12 @@ header {
 }
 
 .hero-description {
-    margin: 20px 0 0;
+    margin: 20px auto 0;
     max-width: 540px;
     font-size: 18px;
     line-height: 1.5;
     color: var(--slate);
+    text-align: center;
 }
 
 .hero h1 {
@@ -419,6 +421,15 @@ header {
     font-family: var(--font-mono);
     font-size: 16px;
     font-weight: 400;
+}
+
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
 }
 
 /* ABOUT SECTION */
@@ -519,17 +530,16 @@ header {
 
 /* EXPERIENCE SECTION */
 .experience-tabs {
-    display: flex;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
 }
 
 .tab-list {
-    position: relative;
-    z-index: 3;
-    width: max-content;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid var(--lightest-navy);
 }
 
 .tab-list-item {
@@ -831,6 +841,8 @@ header {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transform: translateX(0);
+    transition: transform var(--transition);
 }
 
 .btn-text {
@@ -943,25 +955,28 @@ footer {
     }
     
     .experience-tabs {
-        display: block;
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .tab-list {
         display: flex;
+        flex-direction: row;
         overflow-x: auto;
         margin-bottom: 30px;
+        border-left: none;
+        border-bottom: 2px solid var(--lightest-navy);
     }
     
     .tab-list-item {
-        border-left: 0;
+        flex: 0 0 auto;
+        border-left: none;
         border-bottom: 2px solid var(--lightest-navy);
     }
     
     .tab-list-button.active {
-        border-left: 0;
+        border-left: none;
         border-bottom: 2px solid var(--secondary-color);
-        margin-left: 0;
-        margin-bottom: -2px;
     }
     
     .tab-content {
@@ -996,15 +1011,14 @@ footer {
     }
     
     .hero-cta {
-        display: flex;
         flex-direction: column;
-        align-items: center;
+        gap: 15px;
     }
     
     .hero-cta .btn {
-        margin: 10px 0;
         width: 100%;
-        text-align: center;
+        max-width: 300px;
+        margin: 0;
     }
     
     .skill-card {
@@ -1023,5 +1037,11 @@ footer {
     
     .contact-wrapper {
         padding: 40px 20px;
+    }
+    
+    .contact-btn {
+        transform: translateX(-5%);
+        width: 90%;
+        max-width: 280px;
     }
 }
