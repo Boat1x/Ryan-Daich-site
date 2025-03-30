@@ -963,24 +963,23 @@ footer {
         display: flex;
         flex-direction: row;
         overflow-x: auto;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         border-left: none;
         border-bottom: 2px solid var(--lightest-navy);
+        padding-bottom: 10px;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .tab-list::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
     }
     
-    .tab-list-item {
-        flex: 0 0 auto;
-        border-left: none;
-        border-bottom: 2px solid var(--lightest-navy);
-    }
-    
-    .tab-list-button.active {
-        border-left: none;
-        border-bottom: 2px solid var(--secondary-color);
-    }
-    
-    .tab-content {
-        padding-left: 0;
+    .scroll-hint {
+        display: block;
+        margin-bottom: 20px;
     }
     
     .certifications-container {
@@ -1041,7 +1040,28 @@ footer {
     
     .contact-btn {
         transform: translateX(-5%);
-        width: 90%;
-        max-width: 280px;
+        width: 70%;
+        max-width: 220px;
     }
+}
+
+.scroll-hint {
+    display: none;
+    text-align: center;
+    color: var(--light-slate);
+    font-size: 14px;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.scroll-hint i {
+    margin: 0 5px;
+    color: var(--secondary-color);
+    animation: scrollHint 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollHint {
+    0% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    100% { transform: translateX(-3px); }
 }
