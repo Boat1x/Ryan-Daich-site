@@ -30,11 +30,13 @@
     scroll-behavior: smooth;
 }
 
-body {
+html, body {
     background-color: var(--navy);
     color: var(--slate);
     line-height: 1.6;
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 /* SCROLLBAR STYLING */
@@ -531,34 +533,36 @@ header {
 }
 
 .tab-list-item {
-    border-left: 2px solid var(--lightest-navy);
-    transition: var(--transition);
-}
-
-.tab-list-item:hover {
-    background-color: var(--light-navy);
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .tab-list-button {
-    display: flex;
-    align-items: center;
     width: 100%;
-    height: 42px;
-    padding: 0 20px 2px;
+    text-align: left;
+    padding: 10px 15px;
+    background: transparent;
     border: none;
-    background-color: transparent;
+    border-left: 2px solid var(--lightest-navy);
     color: var(--slate);
     font-family: var(--font-mono);
     font-size: 13px;
     text-align: left;
     cursor: pointer;
     transition: var(--transition);
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.tab-list-button:hover {
+    color: var(--secondary-color);
+    background: var(--light-navy);
 }
 
 .tab-list-button.active {
     color: var(--secondary-color);
     border-left: 2px solid var(--secondary-color);
-    margin-left: -2px;
+    background: var(--light-navy);
 }
 
 .tab-content {
@@ -843,14 +847,14 @@ header {
 
 /* FOOTER */
 footer {
-    padding: 50px 0;
+    padding: 20px 0;
     text-align: center;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .social-links a {
