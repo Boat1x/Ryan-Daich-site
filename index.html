@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a192f">
     <title>Ryan Daich - Cybersecurity Professional</title>
+    <!-- Favicon links -->
+    <link rel="icon" href="images/favicon.png" type="image/png" sizes="196x196">
+    <link rel="icon" href="images/favicon.png" type="image/png" sizes="128x128">
+    <link rel="icon" href="images/favicon.png" type="image/png" sizes="96x96">
+    <link rel="icon" href="images/favicon.png" type="image/png" sizes="64x64">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" sizes="180x180">
+    <!-- End of favicon links -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
     <link href="typing-animation.css" rel="stylesheet">
@@ -221,74 +229,108 @@
     <section id="skills" class="section" style="background-color: var(--dark-navy);">
         <div class="container">
             <h2 class="numbered-heading skills">What I Can Do</h2>
+            
+            <!-- Enhanced skill filter buttons -->
+            <div class="skill-filters">
+                <button class="skill-filter-btn active" data-filter="all">
+                    <span class="filter-icon"><i class="fas fa-layer-group"></i></span>
+                    All Skills
+                </button>
+                <button class="skill-filter-btn" data-filter="cybersecurity">
+                    <span class="filter-icon"><i class="fas fa-shield-alt"></i></span>
+                    Cybersecurity
+                </button>
+                <button class="skill-filter-btn" data-filter="development">
+                    <span class="filter-icon"><i class="fas fa-code"></i></span>
+                    Web Development
+                </button>
+                <button class="skill-filter-btn" data-filter="software">
+                    <span class="filter-icon"><i class="fas fa-tools"></i></span>
+                    Software & Tools
+                </button>
+                <button class="skill-filter-btn" data-filter="frameworks">
+                    <span class="filter-icon"><i class="fas fa-cubes"></i></span>
+                    Frameworks
+                </button>
+                <button class="skill-filter-btn" data-filter="infrastructure">
+                    <span class="filter-icon"><i class="fas fa-server"></i></span>
+                    Infrastructure
+                </button>
+            </div>
+            
             <div class="skills-container">
-                <div class="skill-card">
+                <div class="skill-card" data-category="cybersecurity">
                     <h3>Cybersecurity</h3>
                     <ul>
-                        <li>Threat & Incident Response</li>
-                        <li>Identity & Access Management</li>
-                        <li>Risk Management and Audit</li>
-                        <li>Phishing Simulations</li>
-                        <li>Security Awareness Training</li>
-                        <li>Vulnerability Assessment</li>
+                        <li data-skill="cybersecurity">Threat & Incident Response</li>
+                        <li data-skill="cybersecurity">Identity & Access Management</li>
+                        <li data-skill="cybersecurity">Risk Management and Audit</li>
+                        <li data-skill="cybersecurity">Phishing Simulations</li>
+                        <li data-skill="cybersecurity">Security Awareness Training</li>
+                        <li data-skill="cybersecurity">Vulnerability Assessment</li>
                     </ul>
                 </div>
-                <div class="skill-card">
+
+                <div class="skill-card" data-category="development frameworks">
                     <h3>Programming</h3>
                     <ul>
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>SQL</li>
-                        <li>HTML/CSS</li>
-                        <li>Javascript</li>
-                        <li>Typescript</li>
-                        <li>React</li>
-                        <li>Node.js</li>
-                        <li>Git</li>
+                        <li data-skill="development">Python</li>
+                        <li data-skill="development">Java</li>
+                        <li data-skill="development">SQL</li>
+                        <li data-skill="development frameworks">HTML/CSS</li>
+                        <li data-skill="development frameworks">Javascript</li>
+                        <li data-skill="development frameworks">Typescript</li>
+                        <li data-skill="frameworks">React</li>
+                        <li data-skill="frameworks">Node.js</li>
+                        <li data-skill="development software">Git</li>
                     </ul>
                 </div>
-                <div class="skill-card">
+
+                <div class="skill-card" data-category="software cybersecurity">
                     <h3>Tools & Software</h3>
                     <ul>
-                        <li>Microsoft Defender XDR</li>
-                        <li>Wazuh</li>
-                        <li>VS Code</li>
-                        <li>Wireshark</li>
-                        <li>Metasploit</li>
-                        <li>Armitage</li>
-                        <li>Microsoft Office Suite</li>
+                        <li data-skill="cybersecurity software">Microsoft Defender XDR</li>
+                        <li data-skill="cybersecurity software">Wazuh</li>
+                        <li data-skill="development software">VS Code</li>
+                        <li data-skill="cybersecurity software">Wireshark</li>
+                        <li data-skill="cybersecurity software">Metasploit</li>
+                        <li data-skill="cybersecurity software">Armitage</li>
+                        <li data-skill="software">Microsoft Office Suite</li>
                     </ul>
                 </div>
-                <div class="skill-card">
+
+                <div class="skill-card" data-category="infrastructure">
                     <h3>Operating Systems</h3>
                     <ul>
-                        <li>Windows</li>
-                        <li>Linux (Kali and Fedora)</li>
-                        <li>Parrot OS</li>
-                        <li>MAC OS</li>
-                        <li>VirtualBox & VMWare</li>
+                        <li data-skill="infrastructure">Windows</li>
+                        <li data-skill="infrastructure cybersecurity">Linux (Kali and Fedora)</li>
+                        <li data-skill="infrastructure cybersecurity">Parrot OS</li>
+                        <li data-skill="infrastructure">MAC OS</li>
+                        <li data-skill="infrastructure software">VirtualBox & VMWare</li>
                     </ul>
                 </div>
-                <div class="skill-card">
+
+                <div class="skill-card" data-category="infrastructure cybersecurity">
                     <h3>IT Infrastructure</h3>
                     <ul>
-                        <li>Active Directory</li>
-                        <li>Network Security</li>
-                        <li>System Integration</li>
-                        <li>Endpoint Protection</li>
-                        <li>Security Architecture</li>
-                        <li>Log Analysis</li>
+                        <li data-skill="infrastructure cybersecurity">Active Directory</li>
+                        <li data-skill="infrastructure cybersecurity">Network Security</li>
+                        <li data-skill="infrastructure">System Integration</li>
+                        <li data-skill="infrastructure cybersecurity">Endpoint Protection</li>
+                        <li data-skill="cybersecurity">Security Architecture</li>
+                        <li data-skill="cybersecurity">Log Analysis</li>
                     </ul>
                 </div>
-                <div class="skill-card">
+
+                <div class="skill-card" data-category="leadership">
                     <h3>Leadership</h3>
                     <ul>
-                        <li>Team Management</li>
-                        <li>Project Coordination</li>
-                        <li>Public Speaking</li>
-                        <li>Training & Development</li>
-                        <li>Strategic Planning</li>
-                        <li>Event Organization</li>
+                        <li data-skill="leadership">Team Management</li>
+                        <li data-skill="leadership">Project Coordination</li>
+                        <li data-skill="leadership">Public Speaking</li>
+                        <li data-skill="leadership">Training & Development</li>
+                        <li data-skill="leadership">Strategic Planning</li>
+                        <li data-skill="leadership">Event Organization</li>
                     </ul>
                 </div>
             </div>

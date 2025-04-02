@@ -23,6 +23,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100 * index);
     });
     
+    // Enhanced navigation hover effects
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            // Add a subtle transition when hovering
+            this.style.transition = 'all 0.3s ease';
+            link.querySelectorAll('span').forEach(span => {
+                span.style.transition = 'transform 0.3s ease';
+                span.style.display = 'inline-block';
+                span.style.transform = 'translateY(-2px)';
+            });
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            link.querySelectorAll('span').forEach(span => {
+                span.style.transform = 'translateY(0)';
+            });
+        });
+    });
+    
+    // Mobile nav enhanced effects
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+    
+    mobileNavLinks.forEach((link, index) => {
+        // Add transition delay for smoother appearance
+        link.parentElement.style.setProperty('--i', index);
+    });
+    
     // Add animation delay to experience panel display
     const tabs = document.querySelectorAll('.tab-list-button');
     const panels = document.querySelectorAll('.tab-panel');
@@ -97,5 +126,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         lastScrollY = window.scrollY;
+    });
+    
+    // Enhanced Skill filtering functionality with fixed selectors
+    // Get all filter buttons and skill items
+    const filterButtons = document.querySelectorAll('.skill-filter-btn');
+    const skillItems = document.querySelectorAll('[data-skill]');
+    const skillsContainer = document.querySelector('.skills-container');
+    
+    // Add click event to each filter button
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Reset all skill highlights
+            skillItems.forEach(item => {
+                item.classList.remove('highlighted-skill');
+            });
+            
+            // If not showing all, highlight the filtered skills
+            if (filterValue !== 'all') {
+                skillsContainer.classList.add('filtering');
+                
+                // More robust selection method
+                skillItems.forEach(item => {
+                    const skillCategories = item.getAttribute('data-skill').split(' ');
+                    if (skillCategories.includes(filterValue)) {
+                        item.classList.add('highlighted-skill');
+                    }
+                });
+            } else {
+                // Remove filtering class when showing all
+                skillsContainer.classList.remove('filtering');
+            }
+        });
     });
 });

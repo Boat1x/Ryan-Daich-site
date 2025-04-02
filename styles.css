@@ -202,7 +202,8 @@ header {
 }
 
 .logo:hover img {
-    transform: scale(1.02);
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.3));
 }
 
 .nav-links {
@@ -233,6 +234,7 @@ header {
 
 .nav-links a:hover {
     color: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 .resume-button {
@@ -252,6 +254,7 @@ header {
 
 .resume-button:hover {
     background-color: var(--green-tint);
+    transform: translateY(-2px);
 }
 
 /* MOBILE NAV */
@@ -354,8 +357,6 @@ header {
 
 .mobile-nav-links a:hover {
     color: var(--secondary-color);
-    background-color: var(--green-tint);
-    border-radius: 4px;
 }
 
 .overlay {

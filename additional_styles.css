@@ -44,6 +44,79 @@ body.page-visible {
   filter: drop-shadow(0 0 15px rgba(100, 255, 218, 0.5));
 }
 
+/* Enhanced navigation hover effects */
+.nav-links a {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--green-tint);
+  transition: height 0.3s ease;
+  z-index: -1;
+  border-radius: 4px;
+}
+
+.nav-links a:hover::before {
+  height: 100%;
+}
+
+/* Mobile navigation enhancements */
+.mobile-nav-links a {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-links a::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 0;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+  transition: height 0.3s ease;
+}
+
+.mobile-nav-links a:hover {
+  padding-left: 15px !important;
+  background-color: rgba(100, 255, 218, 0.05) !important;
+}
+
+.mobile-nav-links a:hover::before {
+  height: 70%;
+}
+
+/* Resume button enhanced hover */
+.resume-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--green-tint), transparent);
+  transition: left 0.5s ease;
+}
+
+.resume-button:hover::before {
+  left: 100%;
+}
+
 /* Enhanced tab animations */
 .tab-list-button {
   position: relative;
@@ -145,26 +218,6 @@ body.page-visible {
 
 .btn:hover::after {
   opacity: 0.15;
-}
-
-/* Header navigation highlight effect */
-.nav-links a::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: var(--green-tint);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.3s ease;
-  z-index: -1;
-  border-radius: 4px;
-}
-
-.nav-links a:hover::before {
-  transform: scaleY(1);
 }
 
 /* Education card enhancements */
@@ -315,4 +368,174 @@ body.page-visible {
       flex-wrap: wrap;
       gap: 15px;
   }
+}
+
+/* Enhanced Skill Filters */
+.skill-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 auto 40px;
+    max-width: 850px;
+}
+
+.skill-filter-btn {
+    background-color: var(--light-navy);
+    color: var(--lightest-slate);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: var(--font-mono);
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid transparent;
+}
+
+.filter-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+
+.skill-filter-btn:hover {
+    background-color: var(--navy);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--secondary-tint);
+}
+
+.skill-filter-btn.active {
+    background-color: var(--navy);
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0 0 10px var(--secondary-tint), 
+                inset 0 0 8px rgba(100, 255, 218, 0.15);
+}
+
+.skill-filter-btn.active .filter-icon {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Enhanced highlighted skills styling - glow only version */
+.highlighted-skill {
+    color: var(--secondary-color);
+    font-weight: 500;
+    position: relative;
+    padding: 0 2px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Refined glow effect */
+@keyframes subtleGlow {
+    0% {
+        text-shadow: 0 0 1px rgba(100, 255, 218, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 4px rgba(100, 255, 218, 0.25);
+    }
+    100% {
+        text-shadow: 0 0 1px rgba(100, 255, 218, 0.2);
+    }
+}
+
+.highlighted-skill {
+    animation: subtleGlow 2.5s ease-in-out infinite;
+}
+
+/* Fade transition for skill highlighting */
+li[data-skill] {
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Add visual cue for filtered skills - improved version */
+.skills-container.filtering li:not(.highlighted-skill) {
+    opacity: 0.4;
+    filter: grayscale(30%);
+}
+
+/* Improve skill card focus */
+.skills-container.filtering .skill-card {
+    transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.skills-container.filtering .skill-card:has(li.highlighted-skill) {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+}
+
+/* Responsive adjustments for skill filters */
+@media screen and (max-width: 768px) {
+    .skill-filters {
+        gap: 10px;
+    }
+    
+    .skill-filter-btn {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .skill-filters {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 5px 0 15px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -20px 30px;
+        padding: 5px 20px 15px;
+    }
+    
+    .skill-filter-btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+}
+
+/* Enhance skill cards for better visual hierarchy */
+.skills-container {
+    transition: opacity 0.3s ease;
+}
+
+.skill-card {
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.skill-card h3 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.skill-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--secondary-color);
+    opacity: 0.5;
 }
